@@ -1,0 +1,84 @@
+{% extends "myblog/base.html" %}
+
+{%block source%}
+	{%load static from staticfiles%}
+	<script type="text/javascript" src="{% static 'myblog/js/jquery-1.12.4.js'%}"></script>
+	<script type="text/javascript" src="{% static 'myblog/js/bootstrap.min.js'%}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/bootstrap.min.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/main.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/reset.css'%}">
+{%endblock%}
+
+{%block style%}
+	<style type="text/css">
+
+
+		.text{
+			margin:150px auto;
+			position: relative;
+		}
+
+		.text .title{
+			font-size: 30px;
+			display: block;
+			margin-top: 20px;
+		}
+
+		.text .datetime{
+			font-size: 20px;
+		}
+
+		.text .discribe{
+			margin-top: 25px;
+			height: 260px;
+		}
+
+		.textImg{
+			margin-top: 75px;
+			bottom: 25px;
+			margin-bottom: 25px;
+		}
+		.like{
+			width: 930px;
+			height: 330px;
+			background-color: gold;
+		}
+		.tags:nth-child{
+			position: absolute;
+			bottom: -5px;
+			text-decoration:underline;
+			color: #3AC0C7;
+		}
+
+
+	</style>
+{%endblock%}
+{%block body%}
+
+	<div class="container text">
+		<botton class="btn btn-default">tag</botton>
+		<a class="title" href="">{{artical.title}}</a>
+		<div class="datetime">{{artical.pub_date}}</div>
+		<div class="discribe">
+			<p>
+			{{artical.content}}</p>
+			<br>
+			<p>	{{artical.content}}</p>
+		</div>
+		<div class="textImg"><img class = "img-responsive center-block" src="{%static 'myblog/images/list.webp'%}" alt=""></div>
+		<div class="tags">
+			<span>tags:</span>
+			<a href="">A</a>
+			<a href="">B</a>
+			<a href="">C</a>
+			<a href="">D</a>
+		</div>
+	</div>
+
+	<div class="container">
+		<h3>你可能喜欢</h3>
+		<div class="like">滚动</div>
+	</div>
+
+
+{%endblock%}

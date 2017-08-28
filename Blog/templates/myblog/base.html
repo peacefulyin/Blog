@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>主页</title>
+	{%block source%}{%endblock%}
+	{%block js%}{%endblock%}
+	{%load static from staticfiles%}
+
+	<style>
+		.bot2{
+			height: 410px;
+			background-color: rgb(102,102,102);
+			position: relative;
+			width: 100%;
+			left:0;
+			bottom:0;
+		}
+		.bot2 .center{
+			height: 410px;
+			margin-left:480px;
+		}
+		.bot2 .row1{
+			height: 140px;
+			margin-top: 75px;
+		}
+		.bot2 .row2{
+			height: 100px;
+			margin-top: 75px;
+		}
+		.bot2 .row1 .left{
+			height: 140px;
+		}
+		.bot2 .row1 .right{
+			height: 140px;
+		}
+		.bot2 .row1 .img{
+			float: left;
+		}
+		.row1 .about{
+			float: right;
+			width: 350px;
+		}
+		.bot2 .row1 .h3 h3{
+			font-size: 22px;
+			color:white;
+		}
+		.bot2 .row1 .p p{
+			color:white;
+		}
+	</style>
+	{%block style%}{%endblock%}
+{%load static from staticfiles%}
+</head>
+<body>
+	<div class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<botton class="navbar-toggle" data-toggle="collapse" data-target="#togglemenu">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</botton>
+				<a href="" class="navbar-brand">LOGO</a>
+			</div>
+			<div class="collapse navbar-collapse" id="togglemenu">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="" >Home</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="">contact</a></li>
+					<li><a href="">Python</a></li>
+					<li><a href="">Piano</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" name="" class="form-control">
+							<span class="input-group-btn">
+								<botton class="btn btn-default"><span class="glyphicon glyphicon-search"></span></botton>
+							</span>
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{%block body%}{%endblock%}
+
+
+
+
+	<div class="container-fluid bot2">
+		<div class="row ">
+			<div class="col-md-6 center">
+				<div class="row row1">
+					<div class="col-md-7 left">
+						<div class="img"><img src="{%static 'myblog/images/girl.webp'%}" alt=""></div>
+						<div class="about">
+							<div class="h3"><h3>about me</h3></div>
+							<div class="p">
+								<p>I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 right col-md-offset-2"></div>
+				</div>
+				<div class="row row2 ">
+					<div class="seach"><h3>Search by Tags</h3></div>
+					<div><a href="">hello</a></div>
+					<div><span>hello</span></div>
+				</div>
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+
+
+
+</body>
+</html>

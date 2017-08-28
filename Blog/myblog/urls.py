@@ -1,7 +1,10 @@
 #coding=utf-8
 from django.conf.urls import url
+from myblog import views
 
 urlpatterns = [
-    #url(r'^hello/', views.index),
-    #url(r'^add/(\d+)/(\d+)/$', views.calc,name='add'),
+    url(r'^index/(\d+)', views.index),
+    url(r'^text/$',views.text),
+    url(r'^about/$',views.about),
+    url(r'^artical/(.*)$',views.show_artical),
     ]
