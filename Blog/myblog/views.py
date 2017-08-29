@@ -24,3 +24,6 @@ def show_artical(request,id):
     artical = Artical.objects.get(id=id)
     context = {'artical':artical}
     return render(request,'myblog/text.html',context)
+
+def lunbo(request):
+    return render(request,'myblog/lunbo.html')

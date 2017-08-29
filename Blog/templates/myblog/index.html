@@ -7,6 +7,10 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/bootstrap.min.css'%}">
 	<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/main.css'%}">
 	<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/reset.css'%}">
+	<link rel="stylesheet" type="text/css" href="{%static 'myblog/lunbo/css/normalize.css'%}" />
+	<link rel="stylesheet" href="{%static 'myblog/lunbo/dist/pageSwitch.min.css'%}">
+	<script src="{%static 'myblog/lunbo/dist/pageSwitch.min.js'%}"></script>
+
 {%endblock%}
 {% block js%}
 <script>
@@ -18,7 +22,16 @@
             $('.prev_page').attr('href',Number(page_num) - 1);
 
         }
+		$("#container").PageSwitch({
+			direction:'horizontal',
+			easing:'ease-in',
+			duration:1000,
+			autoPlay:true,
+			loop:'false'
+		});
     });
+
+
 
 
 </script>
@@ -54,6 +67,8 @@
 			background:rgb(242,242,242);
 			height: 400px;
 			margin:35px auto;
+			position: relative;
+			left:-150px;
 		}
 
 		.list a{
@@ -75,9 +90,6 @@
 
 		}
 
-		.list .discribe .img img{
-
-		}
 
 		.bot1{
 			background-color: rgb(58,192,199);
@@ -87,6 +99,53 @@
 		.pagination{
 			position: relative;
 			left: 370px;
+		}
+		.right_info{
+			position: absolute;
+			right: 55px;
+			margin-top: 100px;
+			height:800px;
+			width: 350px;
+			background-color: #2b542c;
+		}
+		.book{
+			margin: 0 auto;
+		}
+<!-- 轮播 -->
+
+	*{
+			padding: 0;
+			margin: 0;
+		}
+		#container {
+				width: 250px;
+				height: 200px;
+				overflow: hidden;
+		}
+		.sections,.section {
+			height:100%;
+		}
+		#container,.sections {
+			position: relative;
+		}
+		.section {
+			background-color: #000;
+			background-size: cover;
+			background-position: 50% 50%;
+			text-align: center;
+			color: white;
+		}
+		#section0 {
+			background-image: url('{%static "myblog/lunbo/images/lunbo.png"%}');
+		}
+		#section1 {
+			background-image: url('{%static "myblog/lunbo/images/lunbo.png"%}');
+		}
+		#section2 {
+			background-image: url('{%static "myblog/lunbo/images/lunbo.png"%}');
+		}
+		#section3 {
+			background-image: url('{%static "myblog/lunbo/images/lunbo.png"%}');
 		}
 
 
@@ -144,6 +203,48 @@
 		</div>
 	</div>
 	</div>
+
+			<div class="right_info col-md-2">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<a href=""><img src="" alt="">微信</a>
+							<a href=""><img src="" alt="">邮箱</a>
+							<a href=""><img src="" alt="">收藏</a>
+						</div>
+					</div>
+					<div class="row hot">
+						<div class="col-md-12">
+							<div><span>热门专题</span></div>
+							<div id="container">
+								<div class="sections">
+									<div class="section" id="section0"><h3>this is the page1</h3></div>
+									<div class="section" id="section1"><h3>this is the page2</h3></div>
+									<div class="section" id="section2"><h3>this is the page3</h3></div>
+									<div class="section" id="section3"><h3>this is the page4</h3></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row book">
+						<div class="col-md-12">
+							<div><span>What I'm Reading</span></div>
+							<div><span>书名</span></div>
+							<div><p>本书简介</p></div>
+							<div><img src="" alt="">图片</div>
+						</div>
+					</div>
+					<div class="row comment">
+						<div class="col-md-12">
+							<div><span>留言</span></div>
+							<div><span>书名</span></div>
+							<div><p>本书简介</p></div>
+							<div><img src="" alt="">图片</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 	{%for i in data%}
 	<div class="container list">
 		<a href="/artical/{{artical.id}}">{{artical.title}}</a>
@@ -158,7 +259,10 @@
 
 
 
-	
+
+
+
+
 	<nav aria-label="Page navigation">
 	  <ul class="pagination">
 	    <li>
