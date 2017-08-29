@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from models import User,Artical
 from django.core.paginator import *
+from django.http import JsonResponse
 
 from django.shortcuts import render
 
@@ -25,5 +26,8 @@ def show_artical(request,id):
     context = {'artical':artical}
     return render(request,'myblog/text.html',context)
 
-def lunbo(request):
-    return render(request,'myblog/lunbo.html')
+def test(request):
+    return render(request,'myblog/comment.html')
+
+def getjson(request):
+    return JsonResponse({'data':'1'})
