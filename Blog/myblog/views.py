@@ -50,19 +50,39 @@ def text(request):
 def about(request):
     return render(request,'myblog/about.html')
 
-def show_artical(request,id):
-    artical = Artical.objects.get(id=id)
-    context = {'artical':artical}
+def show_artical(request,id,pagenum=1):
+    artical = Artical.objects.get(id=1)
+    comments = artical.comment_set.all()
+    pagenator = Paginator(comments, 5)
+    page = pagenator.page(int(pagenum))
+    context = {'artical':artical,'comments':page}
     return render(request,'myblog/text.html',context)
+
+@csrf_exempt
+def return_comments(request,pagenum):
+    title = request.POST.get('atitle')
+    artical = Artical.objects.get(title=title)
+    comments = artical.comment_set.all()
+    pagenator = Paginator(comments, 5)
+    page = pagenator.page(int(pagenum))
+    list = []
+    for i in page:
+        list.append({'name':i.name,'pub_time':i.pub_time,'text':i.text})
+    context = {'comments':list}
+    return JsonResponse(context)
+
 
 def test(request):
     return render(request,'myblog/comment.html')
 
 @csrf_exempt
 def send_data(request):
-    data = request.POST.get('name')
+    name = request.POST.get('name')
+    text = request.POST.get('text')
+    time = request.POST.get('time')
     aname = request.POST.get('aname')
     artical = Artical.objects.get(title=aname)
-    
-    return JsonResponse({'1':data})
+    Comment.objects.get_or_create(name=name, pub_time=time, text = text, artical = artical)
+
+    return JsonResponse({'1':'1'})
 

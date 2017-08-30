@@ -23,7 +23,6 @@ class Comment(models.Model):
     name = models.CharField(max_length=100)
     pub_time = models.DateTimeField()
     text = models.CharField(max_length=300)
-    like = models.IntegerField()
     artical = models.ForeignKey(Artical)
     def __str__(self):
         return self.artical.encode('utf-8')
