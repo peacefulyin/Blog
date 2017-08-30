@@ -17,13 +17,40 @@
 {% block js%}
 <script>
 	$(document).ready(function() {
+	    <!-- 暂时
         var url = window.location.href;
         page_num = url.split('/').pop();
         $('.next_page').attr('href',Number(page_num) + 1);
         if (page_num > 1) {
             $('.prev_page').attr('href',Number(page_num) - 1);
-
         }
+		-->
+
+		var url = window.location.href;
+		page_num = url.split('/').pop();
+		$('.next_page').attr('href',Number(page_num) + 1);
+		if (page_num > 1) {
+			$('.prev_page').attr('href',Number(page_num) - 1);
+		}
+
+		$('.ch_page').click(function () {
+			var num = $(this).text();
+			$.get('/getjson/'+num,function (dic) {
+				cen2 = $('.cen2');
+				$.each(dic.a,function (index,item) {
+						$('.list').eq(index).find('.atitle').html(item)
+				});
+			});
+			<!--$('.list:lt(2)').remove(); 				var clist = $('.list').clone(true)[0];  -->
+
+
+
+
+    });
+
+
+
+        <!-- 轮播 -->
 		$("#container").PageSwitch({
 			direction:'horizontal',
 			easing:'ease-in',
@@ -31,6 +58,9 @@
 			autoPlay:true,
 			loop:'false'
 		});
+
+
+
     });
 
 
@@ -42,6 +72,8 @@
 
 {%block style%}
 <style>
+
+
 		.cen1{
 				height:475px;
 			}
@@ -70,7 +102,7 @@
 			height: 400px;
 			margin:35px auto;
 			position: relative;
-			left: 200px;
+			left: 250px;
 		}
 
 		.list a{
@@ -108,7 +140,7 @@
 		}
 		.right_info{
 			position: absolute;
-			right: 55px;
+			right: 200px;
 			margin-top: 100px;
 			height:800px;
 			width: 350px;
@@ -116,6 +148,43 @@
 		}
 		.book{
 			margin: 0 auto;
+		}
+
+	<!-- 轮播 -->
+
+	*{
+			padding: 0;
+			margin: 0;
+		}
+		#container {
+				width: 250px;
+				height: 200px;
+				overflow: hidden;
+		}
+		.sections,.section {
+			height:100%;
+		}
+		#container,.sections {
+			position: relative;
+		}
+		.section {
+			background-color: #000;
+			background-size: cover;
+			background-position: 50% 50%;
+			text-align: center;
+			color: white;
+		}
+		#section0 {
+			background-image: url('{%static "myblog/lunbo/images/lunbo.png"%}');
+		}
+		#section1 {
+			background-image: url('{%static "myblog/lunbo/images/lunbo.png"%}');
+		}
+		#section2 {
+			background-image: url('{%static "myblog/lunbo/images/lunbo.png"%}');
+		}
+		#section3 {
+			background-image: url('{%static "myblog/lunbo/images/lunbo.png"%}');
 		}
 
 </style>
@@ -177,18 +246,18 @@
 
 	<div class="container-fluid m_cen">
 		<div class="row">
-			<div class="col-md-7">
+			<div class="col-md-7 mtain">
 				{%for i in data%}
 					<div class="list row">
 						<div class="col-md-7">
-							<a href="/artical/{{artical.id}}">{{artical.title}}</a>
-							<div>><span class="datetime">{{i.email}}</span></div>
+							<a class="atitle" href="/artical/{{artical.id}}">{{artical.title}}</a>
+							<div><span class="datetime">{{i.email}}</span></div>
 							<div class="discribe ">{{artical.content}}</div>
 							<a href="/artical/{{artical.id}}"><botton class="btn btn-default">阅读</botton></a>
 						</div>
 						<div class="col-md-4">
 							<div class="img col-md-4">
-								<img class="img-responsive center-block" src="{{artical.img_url}}" alt="">
+								<img class="img-responsive center-block" src="{% static 'myblog/images/frame.png'%}" alt="">
 							</div>
 						</div>
 					</div>
@@ -245,21 +314,22 @@
 	<nav aria-label="Page navigation">
 	  <ul class="pagination">
 	    <li>
-	      <a class="prev_page" href="#" aria-label="Previous">
+	      <a class="prev_page ch_page" href="#" onclick="return false" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	      </a>
 	    </li>
 	  	{% for index in data.paginator.page_range %}
 
-	  	<li><a href="/index/{{index}}">{{index}}</a></li>
+	  	<li><a href="" class="ch_page" onclick="return false">{{index}}</a></li>
 		{% endfor %}
 	    <li>
-	      <a class="next_page" href="#" aria-label="Next">
+	      <a class="next_page ch_page" href="#"  onclick="return false" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	      </a>
 	    </li>
 	  </ul>
 	</nav>
+
 
 {%endblock%}
 
