@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from models import User,Artical
+
+from django.views.decorators.csrf import csrf_exempt
+
+from models import User,Artical,Comment
 from django.core.paginator import *
 from django.http import JsonResponse
 
@@ -54,4 +57,12 @@ def show_artical(request,id):
 
 def test(request):
     return render(request,'myblog/comment.html')
+
+@csrf_exempt
+def send_data(request):
+    data = request.POST.get('name')
+    aname = request.POST.get('aname')
+    artical = Artical.objects.get(title=aname)
+    
+    return JsonResponse({'1':data})
 

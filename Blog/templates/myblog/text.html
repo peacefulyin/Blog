@@ -207,7 +207,7 @@
         var now=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
         //获取输入内容
         var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
-        console.log(oHfVal)
+        console.log(oHfVal);
         var oHfName = $(this).parents('.hf-con').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
         var oAllVal = '回复@'+oHfName;
         if(oHfVal.replace(/^ +| +$/g,'') == '' || oHfVal == oAllVal){
@@ -275,6 +275,30 @@
             $(this).find('.date-dz-z-click-red').addClass('red');
         }
     })
+</script>
+
+<script type="text/javascript">
+	console.info('hello');
+	function csole() {
+	    var list = $('.comment-show-con');
+	    var aname = $('.title').text();
+		$.each(list,function (index,item) {
+			var json = {
+			    'name':list.eq(index).find('.comment-size-name').html(),
+				'text':list.eq(index).find('.my-pl-con').html(),
+				'time':list.eq(index).find('.date-dz-left').html(),
+				'like':list.eq(index).find('.z-num').html(),
+				'aname':aname
+
+			};
+			console.info(json);
+			$.post('/send_data',json,function (data,status) {
+
+            })
+    })
+    }
+	time = setInterval("csole()",3000);
+
 </script>
 
 

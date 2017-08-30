@@ -43,13 +43,7 @@
 			});
 			<!--$('.list:lt(2)').remove(); 				var clist = $('.list').clone(true)[0];  -->
 
-
-
-
     });
-
-
-
         <!-- 轮播 -->
 		$("#container").PageSwitch({
 			direction:'horizontal',
@@ -59,11 +53,7 @@
 			loop:'false'
 		});
 
-
-
     });
-
-
 
 </script>
 
@@ -148,6 +138,22 @@
 		}
 		.book{
 			margin: 0 auto;
+		}
+
+		.social img{
+			width: 50px;
+			height:50px;
+			float: left;
+			margin-left: 28px;
+		}
+		.hot{
+			margin: 20px auto;
+
+		}
+
+		.hot .hot_span{
+			font-size: 20px;
+			text-align: center;
 		}
 
 	<!-- 轮播 -->
@@ -265,15 +271,15 @@
 			</div>
 			<div class="right_info col-md-4">
 				<div class="row">
-						<div class="col-md-12">
-							<a href=""><img src="" alt="">微信</a>
-							<a href=""><img src="" alt="">邮箱</a>
-							<a href=""><img src="" alt="">收藏</a>
+						<div class="col-md-12 social">
+							<a href=""><img class="img-responsive center-block" src="{% static 'myblog/images/twitter.png'%}" alt=""></a>
+							<a href=""><img class="img-responsive center-block" src="{% static 'myblog/images/twitter.png'%}" alt=""></a>
+							<a href=""><img class="img-responsive center-block" src="{% static 'myblog/images/twitter.png'%}" alt=""></a>
 						</div>
 					</div>
 					<div class="row hot">
 						<div class="col-md-12">
-							<div><span>热门专题</span></div>
+							<div class="hot_span"><span>热门专题</span></div>
 							<div id="container">
 								<div class="sections">
 									<div class="section" id="section0"><h3>this is the page1</h3></div>
