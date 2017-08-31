@@ -8,7 +8,19 @@
 	{%load static from staticfiles%}
 	
 	<style>
-
+		body{
+			background-color: rgb(242,242,242);
+			    background: #f2f2f2 url() !important;
+			    color: #525452;
+			    font-family: Raleway, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
+			    font-size: 18px;
+			    font-weight: normal;
+			    line-height: 1.85em;
+			
+		}
+		p {
+			    margin: 1em 0 1.5em 0;
+			}
 		.bot2{
 			height: 410px;
 			background-color: rgb(102,102,102);
@@ -52,6 +64,10 @@
 
 	<!-- navi -->
 
+		.n_navi{
+			background-color: black;
+		}
+
 		#navbar-menu{
 			width: 100%;
 		}
@@ -64,6 +80,7 @@
 		.navbar-brand{
 		    padding: 29px 15px;
 		    height: auto;
+
 		}
 		nav.navbar.bootsnav{
 		    border: none;
@@ -122,6 +139,125 @@
 		    nav.navbar.bootsnav ul.nav > li > a{ margin: 0; }
 		}
 
+		/* footer*/
+		.widget {
+		    margin: 0px 0 40px 20px;
+		    padding: 30px;
+		    border: none;
+		    background: none;
+		    float: left;
+		    width: 100%;
+		    background: #fff;
+		    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05);
+		}
+		#footer{
+		float: left;
+	    position: relative;
+	    width: 100%;
+	    background: #fff;
+	    border-top: 1px solid #eee;
+	    padding-bottom: 60px;
+	    margin-top: 80px;
+		}
+
+		#footer .block3 {
+		    position: relative;
+		    float: left;
+		    width: 100%;
+		    background: #fff;
+		    -webkit-box-shadow: 1px 0px 0px 1px rgba(0,0,0,0.05);
+		    -moz-box-shadow: 1px 0px 0px 1px rgba(0,0,0,0.05);
+		    box-shadow: 1px 0px 0px 1px rgba(0,0,0,0.05);
+		}
+		.block3 .block3-instagram-title{
+			font-size: 30px !important;
+    		margin: 30px 0;
+    		text-align: center;
+    		color: 
+		}
+
+		.footerinside{
+			margin: 0 auto;
+		}
+
+		.block_footer_text, .quote-category .blogpostcategory, .quote-widget p, .quote-widget .blogcontent-title{
+			font-family: Playfair Display, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
+		}
+		.block_footer_text {
+		    float: left;
+		    text-align: center;
+		    font-size: 26px;
+		    line-height: 40px;
+		    font-style: italic;
+		    color: #ccc;
+		    margin-bottom: 5px;
+		    margin-top: 50px;
+		}
+
+		.footer_widget1, .footer_widget2, .footer_widget3 {
+		    width: 31%;
+		    margin-top: 35px;
+		    position: relative;
+		    margin-right: 70px;
+		    padding: 0px 0 0px 0px;
+		    float: left;
+		}
+
+		#footer .widget{
+		    border: none;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			box-shadow: none;
+			margin-bottom: 40px;
+		}
+
+		.widget.widget_text{
+		    color: #999;
+		    font-size: 16px;
+		}
+		.widget .textwidget{
+			text-align: center;
+		}
+
+		#footerbwrap {
+		    padding: 0;
+		    clear: both;
+		    margin: 0;
+		    width: 100%;
+		    overflow: hidden;
+		    background: #F4F4F4;
+		    color: #bbb;
+		    padding: 0px 0 15px 0;
+		}
+
+		#footerb {
+		    font-size: 14px;
+		    margin: 0 auto;
+		    padding: 0px 0;
+		    width: 1180px;
+		    overflow: hidden;
+		}
+
+		.lowerfooter {
+		    padding-top: 20px;
+		}
+
+		#footerb .copyright {
+		    text-align: center;
+		}
+
+		.left-footer-content {
+		    width: 50%;
+		    float: left;
+		    text-align: left;
+		}
+
+		.right-footer-content {
+		    width: 50%;
+		    float: right;
+		    text-align: right;
+		}
 
 	</style>
 	{%block style%}{%endblock%}
@@ -133,7 +269,7 @@
 	        <div class="container-fluid">
 	            <div class="row">
 	                <div class="col-md-12 pd_navi">
-	                    <nav class="navbar navbar-default navbar-mobile bootsnav">
+	                    <nav class="navbar navbar-default navbar-mobile bootsnav n_navi_1">
 	                        <div class="navbar-header">
 	                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 	                                <i class="fa fa-bars"></i>
@@ -212,38 +348,59 @@
 
 {%block body%}{%endblock%}
 
-
-
-
-	<div class="container-fluid bot2">
-		<div class="row ">
-			<div class="col-md-6 center">
-				<div class="row row1">
-					<div class="col-md-7 left">
-						<div class="img"><img src="{%static 'myblog/images/girl.webp'%}" alt=""></div>
-						<div class="about">
-							<div class="h3"><h3>about me</h3></div>
-							<div class="p">
-								<p>I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.
-								</p>
+	<div class="container-fluid">
+		<div class="row">
+			<div id="footer">
+				<div class="block3">
+					<a href=""></a>
+					<h5 class="block3-instagram-title">FOLLOW ME ON INSTAGRAM</h5>
+				</div>
+			<div class="footerinside">
+				<div class="block_footer_text">
+					<p></p>
+					<p>“I started with Brixton to provide you with daily fresh new ideas about trends. It is a very clean and elegant Wordpress Theme suitable for every blogger. Perfect for sharing your lifestyle.”</p>
+					<p></p>
+				</div>
+				<div class="footer_widget">
+					<div class="footer_widget1">
+						<div class="widget widget_text">
+							<div class="textwidget"></div>
+						</div>
+					</div>
+					<div class="footer_widget2">
+						<div class="widget widget_text">
+							<div class="textwidget">
+								<br>
+								<a href="">
+									<img src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2015/02/brixton-footer-logo.png">
+								</a>
+								<br>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 right col-md-offset-2"></div>
-				</div>
-				<div class="row row2 ">
-					<div class="seach"><h3>Search by Tags</h3></div>
-					<div><a href="">hello</a></div>
-					<div><span>hello</span></div>
+					<div class="footer_widget3"></div>
 				</div>
 			</div>
-
-
+			</div>
 		</div>
-
-
+	</div>
+	<div id="footerbwrap">
+		<div id="footerb">
+			<div class="lowerfooter">
+				<div class="copyright">
+					<div class="left-footer-content">
+						© 2015 copyright PREMIUMCODING // All rights reserved // Privacy Policy
+					</div>
+					<div class="right-footer-content">
+						Brixton was made with love by Premiumcoding
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
+
+	
 
 
 
