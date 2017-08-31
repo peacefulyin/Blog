@@ -21,60 +21,69 @@
 		p {
 			    margin: 1em 0 1.5em 0;
 			}
-		.bot2{
-			height: 410px;
-			background-color: rgb(102,102,102);
-			position: relative;
-			width: 100%;
-			left:0;
-			bottom:0;
-		}
-		.bot2 .center{
-			height: 410px;
-			margin-left:480px;
-		}
-		.bot2 .row1{
-			height: 140px;
-			margin-top: 75px;
-		}
-		.bot2 .row2{
-			height: 100px;
-			margin-top: 75px;
-		}
-		.bot2 .row1 .left{
-			height: 140px;
-		}
-		.bot2 .row1 .right{
-			height: 140px;
-		}
-		.bot2 .row1 .img{
-			float: left;
-		}
-		.row1 .about{
-			float: right;
-			width: 350px;
-		}
-		.bot2 .row1 .h3 h3{
-			font-size: 22px;
-			color:white;
-		}
-		.bot2 .row1 .p p{
-			color:white;
+		
+
+	/* head --> */
+		.top-wrapper {
+		    background: #222;
+		    max-height: 78px;
+		    height: 36px;
 		}
 
-	<!-- navi -->
+		#logo, .logo-wrapper {
+		    background: #1B1B1B;
+		}
+
+		.logo-wrapper {
+			width: 100%;
+			background: #1B1B1B;
+			float: left;
+		}
+
+		.logo-inner {
+		    margin: 0 auto;
+		}
+
+		#logo {
+		    padding-top: 60px;
+		    padding-bottom: 50px;
+		    padding: 80px 0 70px 0;
+		    text-align: center;
+		}
+
+	/* navi --> */
 
 		.n_navi{
 			background-color: black;
 		}
 
+		.pd_navi{
+			height: auto !important;
+		}
+
+		.n_navi_1{
+			margin: 0 !important; 
+		}
+
 		#navbar-menu{
 			width: 100%;
+			background: #1B1B1B;
+			border-top: 2px solid #000;
+	    	border-bottom: 5px solid #000;
+	    	height: 60px;
 		}
 		.pd_navi{
 			padding-left: 0;
 			padding-right: 0;
 
+		}
+
+		.nav .out_tag{
+			padding: 15px 15px 20px 15px;
+			font-size: 16px;
+			font-family: Oswald !important;
+		    font-weight: normal;
+		    color: #fff !important;
 		}
 
 		.navbar-brand{
@@ -91,7 +100,6 @@
 		nav.navbar.bootsnav ul.nav > li > a{
 		    color: #474747;
 		    text-transform: uppercase;
-		    padding: 30px;
 		}
 		nav.navbar.bootsnav ul.nav > li:hover{
 		    background: #f4f4f4;
@@ -100,7 +108,7 @@
 		    content: "";
 		    width: 0;
 		    height: 5px;
-		    background: #34c9dd;
+		    background: #fff;
 		    position: absolute;
 		    bottom: 0;
 		    left: 0;
@@ -264,89 +272,107 @@
 {%load static from staticfiles%}
 </head>
 <body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="top-wrapper col-xs-12"></div>
+		</div>
+		<div class="row">
+			<div class="logo-wrapper col-xs-12">
+				<div class="logo-inner">
+					<div id="logo">
+						<a href="">
+							<img src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2016/09/brixton-alternate-logo.png">
+						</a>							
+					</div>		
+				</div>
+			</div>
+		</div>	
+	</div>
 
-		<div class="n_navi">
-	        <div class="container-fluid">
-	            <div class="row">
-	                <div class="col-md-12 pd_navi">
-	                    <nav class="navbar navbar-default navbar-mobile bootsnav n_navi_1">
-	                        <div class="navbar-header">
-	                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-	                                <i class="fa fa-bars"></i>
-	                            </button>
-	                        </div>
-	                        <div class="collapse navbar-collapse" id="navbar-menu">
-	                            <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
-	                                <li><a href="#">Home</a></li>
-	                                <li><a href="#">About Us</a></li>
-	                                <li class="dropdown">
-	                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shortcodes</a>
-	                                    <ul class="dropdown-menu">
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                        <li class="dropdown">
-	                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Sub Menu</a>
-	                                            <ul class="dropdown-menu">
-	                                                <li><a href="#">Custom Menu</a></li>
-	                                                <li><a href="#">Custom Menu</a></li>
-	                                                <li class="dropdown">
-	                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Sub Menu</a>
-	                                                    <ul class="dropdown-menu multi-dropdown">
-	                                                        <li><a href="#">Custom Menu</a></li>
-	                                                        <li><a href="#">Custom Menu</a></li>
-	                                                        <li><a href="#">Custom Menu</a></li>
-	                                                        <li><a href="#">Custom Menu</a></li>
-	                                                    </ul>
-	                                                </li>
-	                                                <li><a href="#">Custom Menu</a></li>
-	                                            </ul>
-	                                        </li>
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                    </ul>
-	                                </li>
-	                                <li class="dropdown">
-	                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
-	                                    <ul class="dropdown-menu">
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                        <li class="dropdown">
-	                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
-	                                            <ul class="dropdown-menu">
-	                                                <li><a href="#">Custom Menu</a></li>
-	                                                <li><a href="#">Custom Menu</a></li>
-	                                                <li class="dropdown">
-	                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
-	                                                    <ul class="dropdown-menu multi-dropdown">
-	                                                        <li><a href="#">Custom Menu</a></li>
-	                                                        <li><a href="#">Custom Menu</a></li>
-	                                                        <li><a href="#">Custom Menu</a></li>
-	                                                        <li><a href="#">Custom Menu</a></li>
-	                                                    </ul>
-	                                                </li>
-	                                                <li><a href="#">Custom Menu</a></li>
-	                                            </ul>
-	                                        </li>
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                        <li><a href="#">Custom Menu</a></li>
-	                                    </ul>
-	                                </li>
-	                                <li><a href="#">Portfolio</a></li>
-	                                <li><a href="#">Contact Us</a></li>
-	                            </ul>
-	                        </div>
-	                    </nav>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
+	<div class="n_navi">
+        <div class="container-fluid">
+            <div class="row nav_row1">
+                <div class="col-md-12 pd_navi">
+                    <nav class="navbar navbar-default navbar-mobile bootsnav n_navi_1">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbar-menu">
+                            <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
+                                <li><a class="out_tag" href="#">Home</a></li>
+                                <li><a class="out_tag" href="#">About Us</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="out_tag dropdown-toggle" data-toggle="dropdown">Shortcodes</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Sub Menu</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Custom Menu</a></li>
+                                                <li><a href="#">Custom Menu</a></li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Sub Menu</a>
+                                                    <ul class="dropdown-menu multi-dropdown">
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Custom Menu</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="out_tag dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Custom Menu</a></li>
+                                                <li><a href="#">Custom Menu</a></li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+                                                    <ul class="dropdown-menu multi-dropdown">
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Custom Menu</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="out_tag" href="#">Portfolio</a></li>
+                                <li><a class="out_tag" href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 {%block body%}{%endblock%}
+	
+
 
 	<div class="container-fluid">
 		<div class="row">

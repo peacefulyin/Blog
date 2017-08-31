@@ -112,37 +112,15 @@
 			    color: #333;
 			}
 
-		.list,  {
-		    margin-bottom: 50px;
-		    background: #fff;
-		    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05);
-		}			
-
-		.cen1{
-			height:475px;
-			}
-		.cen1_1{
-			text-align: center;
-			line-height: 140px;
-		}
-		.cimg{
-			display: inline-block;
-			margin:0 20px;
-		}
-		.top{
-			margin:0 auto;
-			text-align: center;
-		}
-
-		.cen2{
-			background:rgb(242,242,242);
-		}
-
+		.m_cen{
+			padding-top: 70px;
+		}		
 
 		.list{
+		    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05);
 			background-color: #fff;
 			width: auto;
-			margin-bottom: 50px;
+			margin-bottom:50px;
 			position: relative;
 		}
 
@@ -476,11 +454,185 @@
 		</a>
 	</div>
 
+	<div class="container m_cen">
+		<div class="row">
+			<div class="col-xs-8 mtain">
+				{%for i in data%}
+					<div class="list row">
+						<div class="col-xs-12">
+							<div class="topBlog">
+								<div class="blog-category">
+									<em>
+										<a href="">fashion</a>
+									</em>
+								</div>
+								<h2 class="c_title">
+									<a href="/artical/{{artical.id}}">{{artical.title}}</a>
+								</h2>
+							</div>
+							<div class="blogImage">
+								<a href="">
+									<img class="img-responsive" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2016/03/manly1-1180x650.jpg">
+								</a>
+							</div>
+							<div class="entry">
+								<div class="meta">
+									<div class="blogContent">
+										<div class="blog_content">
+											<p>
+												Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsanet iusto odio dignissim qui blandit praesent. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+											</p>
+											<p>
+												Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit.
+											</p>
+											<p></p>
+											<div class="read_more">
+												<a href="">Continue reading</a>
+											</div>
+											<p></p>
+											<p></p>
+										</div>
+									</div>
+									<div class="blogBottom">
+										<div class="post-meta">
+											<a class="post-meta-time" href="">May 23, 2014</a>
+											<a class="post-meta-author" href="">by Monkey</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							 <!--
+							<div><span class="datetime">{{i.email}}</span></div>
+							<div class="discribe ">{{artical.content}}</div>
+							<a href="/artical/{{artical.id}}"><botton class="btn btn-default">阅读</botton></a>
+							-->
+						</div>
+					</div>
+				{%endfor%}
+			</div>
+				<!-- right-bar-->
+				<div class="right_info col-sm-3 hidden-xs">
+					<div class="row">
+						<div class="sidebar">
+							<div class="widget widget_text">
+								<h3>About me</h3>
+								<div class="widget_line"></div>
+								<div class="textwidget">
+									<img src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2015/02/brixton-avatar.jpg">
+									Hello, my name is Monkey  I am a blogger living in New York. This is my blog, where I post my photos, fashion trends and tips about the fashion world. Never miss out on new stuff.
+								</div>
+							</div>
+
+							<!-- widget_text over-hear -->
+
+							<div class="widget socials">
+								<div class="widgett">
+									<div class="social_icons">
+										<div>
+											<a href="">
+												<i class="fa fa-some"></i>
+											</a>
+											<a href="">
+												<i class="fa fa-some"></i>
+											</a>
+											<a href="">
+												<i class="fa fa-some"></i>
+											</a>
+											<a href="">
+												<i class="fa fa-some"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- social over-hear -->
+
+							<div class="widget category_posts">
+								<h3>Popular Posts</h3>
+								<div class="widget-line"></div>
+								<div class="widgett">
+									<div class="imgholder">
+										<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
+											<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+										</a>
+									</div>
+									<div class="wttitle">
+										<h4>
+											<a href="">OUT TRIP INTO THE WILD</a>
+										</h4>
+									</div>
+								</div>
+								<div class="widgett">
+									<div class="imgholder">
+										<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
+											<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+										</a>
+									</div>
+									<div class="wttitle">
+										<h4>
+											<a href="">A PERFECT SUIT FOR YOUR NEXT MEETING</a>
+										</h4>
+									</div>
+								</div>
+								<div class="widgett">
+									<div class="imgholder">
+										<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
+											<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+										</a>
+									</div>
+									<div class="wttitle">
+										<h4>
+											<a href="">PREPARE FOOD LIKE A CHEF</a>
+										</h4>
+									</div>
+								</div>
+								<div class="widgett">
+									<div class="imgholder">
+										<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
+											<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+										</a>
+									</div>
+									<div class="wttitle">
+										<h4>
+											<a href="">HOW TO BECOME YOUR OWN BOSS</a>
+										</h4>
+									</div>
+								</div>
+							</div>
+							<!-- category_posts over-hear -->
+							<div class="widget widget_categories">
+								<h3>Categories</h3>
+								<div class="widget-line"></div>
+								ul> li
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 
+			<div class="wp_pagenavi">
+				<ul>
+					<li><a href="" class="prev_page" onclick="return false">«</a></li>
+					{% for index in data.paginator.page_range %}
+						<li><a href="" onclick="return false">{{index}}</a></li>
+					{% endfor %}
+					<li><a href="" class="next_page" onclick="return false">»</a></li>
+				</ul>
+			</div>
+		</div>
+<div id="container">
+	<div class="sections">
+		<div class="section" id="section0"><h3>this is the page1</h3></div>
+		<div class="section" id="section1"><h3>this is the page2</h3></div>
+		<div class="section" id="section2"><h3>this is the page3</h3></div>
+		<div class="section" id="section3"><h3>this is the page4</h3></div>
+	</div>
+</div>
 
-	<div class="demo">
+<div class="demo">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12" style="padding: 1em 0;">
@@ -578,115 +730,6 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
-
-
-
-	<div class="container m_cen">
-		<div class="row">
-			<div class="col-xs-8 mtain">
-				{%for i in data%}
-					<div class="list row">
-						<div class="col-xs-12">
-							<div class="topBlog">
-								<div class="blog-category">
-									<em>
-										<a href="">fashion</a>
-									</em>
-								</div>
-								<h2 class="c_title">
-									<a href="/artical/{{artical.id}}">{{artical.title}}</a>
-								</h2>
-							</div>
-							<div class="blogImage">
-								<a href="">
-									<img class="img-responsive" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2016/03/manly1-1180x650.jpg">
-								</a>
-							</div>
-							<div class="entry">
-								<div class="meta">
-									<div class="blogContent">
-										<div class="blog_content">
-											<p>
-												Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsanet iusto odio dignissim qui blandit praesent. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
-											</p>
-											<p>
-												Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit.
-											</p>
-											<p></p>
-											<div class="read_more">
-												<a href="">Continue reading</a>
-											</div>
-											<p></p>
-											<p></p>
-										</div>
-									</div>
-									<div class="blogBottom">
-										<div class="post-meta">
-											<a class="post-meta-time" href="">May 23, 2014</a>
-											<a class="post-meta-author" href="">by Monkey</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							 <!--
-							<div><span class="datetime">{{i.email}}</span></div>
-							<div class="discribe ">{{artical.content}}</div>
-							<a href="/artical/{{artical.id}}"><botton class="btn btn-default">阅读</botton></a>
-							-->
-						</div>
-					</div>
-				{%endfor%}
-			</div>
-	
-
-			<div class="right_info col-sm-3 hidden-xs ">
-				<div class="row right_son">
-						<div class="col-xs-12 social">
-							<a href=""><img class="img-responsive center-block" src="" alt=""></a>
-							<a href=""><img class="img-responsive center-block" src="" alt=""></a>
-							<a href=""><img class="img-responsive center-block" src="" alt=""></a>
-						</div>
-					</div>
-					<div class="row right_son hot">
-						<div class="col-xs-12">
-							<div><span>热门专题</span></div>
-							<div id="container">
-								<div class="sections">
-									<div class="section" id="section0"><h3>this is the page1</h3></div>
-									<div class="section" id="section1"><h3>this is the page2</h3></div>
-									<div class="section" id="section2"><h3>this is the page3</h3></div>
-									<div class="section" id="section3"><h3>this is the page4</h3></div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row right_son book">
-						<div class="col-xs-12">
-							<div><span>What I'm Reading</span></div>
-							<div><span>书名</span></div>
-							<div><p>本书简介</p></div>
-							<div><img src="" alt="">图片</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="wp_pagenavi">
-				<ul>
-					<li><a href="" class="prev_page" onclick="return false">«</a></li>
-					{% for index in data.paginator.page_range %}
-						<li><a href="" onclick="return false">{{index}}</a></li>
-					{% endfor %}
-					<li><a href="" class="next_page" onclick="return false">»</a></li>
-				</ul>
-			</div>
-		</div>
-
-
 
 
 		<!--
