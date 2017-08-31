@@ -92,6 +92,9 @@
 
 {%block style%}
 <style>
+		a:hover{
+			text-decoration: none !important;
+		}
 		a{
 			color: #343434;
 		}
@@ -149,6 +152,17 @@
 			font-style: normal;
 			color: #bbb;
 		}
+		.blog-category em:before{
+		    width: 80px;
+		    height: 8px;
+		    background: url({%static 'myblog/images/brixton-blog-border.png'%}) 0 1px no-repeat;
+		    margin-top: 12px;
+		    margin-left: -90px;
+		    position: absolute;
+		    content: '';
+		}
+
+
 
 		.topBlog .c_title{
 			padding: 0 30px;
@@ -223,6 +237,8 @@
 			    width: 100%;
 			    padding: 0 30px;
 			    margin-left:-30px;
+		        background: url({%static 'myblog/images/card_border.png'%}) 2px 0px repeat-x;
+
 			}
 
 		.blogBottom .post-meta {
@@ -245,6 +261,19 @@
 		    border-bottom: 2px solid #333;
 		    display: inline;
 		}		
+
+		.post-meta:after {
+		    width: 40px;
+		    height: 47px;
+		    background: url({%static 'myblog/images/right_stuff.png'%}) 0 0 no-repeat;
+		    margin-top: 0px;
+		    margin-left: 0px;
+		    position: relative;
+		    float: right;
+		    bottom: 0;
+		    right: -30px;
+		    content: '';
+		}
 
 		/* side */
 		.sidebar h1, h2, h3, h4, h5, h6 {
@@ -621,8 +650,6 @@
 											<div class="read_more">
 												<a href="">Continue reading</a>
 											</div>
-											<p></p>
-											<p></p>
 										</div>
 									</div>
 									<div class="blogBottom">
