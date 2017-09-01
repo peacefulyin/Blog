@@ -92,19 +92,22 @@
 
 {%block style%}
 <style>
-		a:hover{
-			text-decoration: none !important;
-		}
+		
 		a{
 			color: #343434;
+			transition: all 0.25s ease-in-out;
 		}
+		a:hover{
+				text-decoration: none !important;
+				color: #509BA0 !important;
+			}
+
 
 		html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
 		    margin: 0;
 		    padding: 0;
 		    border: 0;
 		    outline: 0;
-		    font-size: 100%;
 		    vertical-align: baseline;
 		    background: transparent;
 		}
@@ -140,6 +143,12 @@
 			position: relative;
 		}
 
+		/* banner */
+
+		#myCarousel{
+
+		}
+
 		/* cards */
 		.blog-category{
 			text-align: center;
@@ -155,12 +164,24 @@
 		.blog-category em:before{
 		    width: 80px;
 		    height: 8px;
-		    background: url({%static 'myblog/images/brixton-blog-border.png'%}) 0 1px no-repeat;
+		    background: url(http://brixton.premiumcoding.com/demo5/wp-content/themes/brixton/images/brixton-border-left.png) 0 1px no-repeat;
 		    margin-top: 12px;
 		    margin-left: -90px;
 		    position: absolute;
 		    content: '';
 		}
+		
+		.blog-category em:after {
+		    width: 80px;
+		    height: 8px;
+		    background: url(http://brixton.premiumcoding.com/demo5/wp-content/themes/brixton/images/brixton-border-right.png) 0 1px no-repeat;
+		    margin-top: 12px;
+		    margin-left: 10px;
+		    position: absolute;
+		    content: '';
+		}
+
+
 
 
 
@@ -258,8 +279,9 @@
 		    padding: 0px 3px;
 		    color: #fff !important;
 		    font-style: normal;
-		    border-bottom: 2px solid #333;
 		    display: inline;
+		    border-bottom: 1px solid #333;
+			transition: border 0.25s ease-in-out;
 		}		
 
 		.post-meta:after {
@@ -275,9 +297,12 @@
 		    content: '';
 		}
 
+		.post-meta a:hover{
+		    border-bottom: 1px solid #fff;
+		}
+
 		/* side */
 		.sidebar h1, h2, h3, h4, h5, h6 {
-		    font-family: sans-serif;
 		    font-weight: normal;
 		    line-height: 110%;
 		    color: #999;
@@ -578,9 +603,7 @@
 			font-size: 22px;
 			color: #333 !important;
 		}
-		.post-description{
-			font-size: 
-		}
+
 
 </style>
 {%endblock style%}
@@ -597,13 +620,13 @@
 		<!-- 轮播（Carousel）项目 -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="{%static 'myblog/images/banner.png'%}" alt="First slide">
+				<img src="{%static 'myblog/images/nbanner.png'%}" alt="First slide">
 			</div>
 			<div class="item">
-				<img src="{%static 'myblog/images/banner.png'%}" alt="Second slide">
+				<img src="{%static 'myblog/images/nbanner.png'%}" alt="Second slide">
 			</div>
 			<div class="item">
-				<img src="{%static 'myblog/images/banner.png'%}" alt="Third slide">
+				<img src="{%static 'myblog/images/nbanner.png'%}" alt="Third slide">
 			</div>
 		</div>
 		<!-- 轮播（Carousel）导航 -->
@@ -847,104 +870,104 @@
 		</div>
 
 
-<div class="demo">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12" style="padding: 1em 0;">
-						<div id="news-slider" class="owl-carousel">
-							<div class="post-slide">
-								<div class="post-img">
-									<a href="#"><img src="{%static 'myblog/river/img/img-1.jpg'%}" alt=""></a>
-								</div>
-								<div class="post-content">
-									<h3 class="post-title"><a href="#">Latest News Post</a></h3>
-									<p class="post-description">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec elementum mauris. Praesent vehicula gravida dolor, ac efficitur sem sagittis.
-									</p>
-									<ul class="post-bar">
-										<li><i class="fa fa-calendar"></i> 2016-7-28</li>
-										<li>
-											<i class="fa fa-folder"></i>
-											<a href="#">Mockup</a>
-											<a href="#">Graphics</a>
-											<a href="#">Flayers</a>
-										</li>
-									</ul>
-									<a href="#" class="read-more">read more</a>
-								</div>
-							</div>
+		<div class="demo">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12" style="padding: 1em 0;">
+								<div id="news-slider" class="owl-carousel">
+									<div class="post-slide">
+										<div class="post-img">
+											<a href="#"><img src="{%static 'myblog/river/img/img-1.jpg'%}" alt=""></a>
+										</div>
+										<div class="post-content">
+											<h3 class="post-title"><a href="#">Latest News Post</a></h3>
+											<p class="post-description">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec elementum mauris. Praesent vehicula gravida dolor, ac efficitur sem sagittis.
+											</p>
+											<ul class="post-bar">
+												<li><i class="fa fa-calendar"></i> 2016-7-28</li>
+												<li>
+													<i class="fa fa-folder"></i>
+													<a href="#">Mockup</a>
+													<a href="#">Graphics</a>
+													<a href="#">Flayers</a>
+												</li>
+											</ul>
+											<a href="#" class="read-more">read more</a>
+										</div>
+									</div>
 
 
-							<div class="post-slide ">
-								<div class="post-img">
-									<a href="#"><img src="{%static 'myblog/river/img/img-2.jpg'%}" alt=""></a>
-								</div>
-								<div class="post-content">
-									<h3 class="post-title"><a href="#">Latest News Post</a></h3>
-									<p class="post-description">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec elementum mauris. Praesent vehicula gravida dolor, ac efficitur sem sagittis.
-									</p>
-									<ul class="post-bar">
-										<li><i class="fa fa-calendar"></i> 2016-7-29</li>
-										<li>
-											<i class="fa fa-folder"></i>
-											<a href="#">Mockup</a>
-											<a href="#">Graphics</a>
-											<a href="#">Flayers</a>
-										</li>
-									</ul>
-									<a href="#" class="read-more">read more</a>
-								</div>
-							</div>
+									<div class="post-slide ">
+										<div class="post-img">
+											<a href="#"><img src="{%static 'myblog/river/img/img-2.jpg'%}" alt=""></a>
+										</div>
+										<div class="post-content">
+											<h3 class="post-title"><a href="#">Latest News Post</a></h3>
+											<p class="post-description">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec elementum mauris. Praesent vehicula gravida dolor, ac efficitur sem sagittis.
+											</p>
+											<ul class="post-bar">
+												<li><i class="fa fa-calendar"></i> 2016-7-29</li>
+												<li>
+													<i class="fa fa-folder"></i>
+													<a href="#">Mockup</a>
+													<a href="#">Graphics</a>
+													<a href="#">Flayers</a>
+												</li>
+											</ul>
+											<a href="#" class="read-more">read more</a>
+										</div>
+									</div>
 
-							<div class="post-slide">
-								<div class="post-img">
-									<a href="#"><img src="{%static 'myblog/river/img/img-3.jpg'%}" alt=""></a>
-								</div>
-								<div class="post-content">
-									<h3 class="post-title"><a href="#">Latest News Post</a></h3>
-									<p class="post-description">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec elementum mauris. Praesent vehicula gravida dolor, ac efficitur sem sagittis.
-									</p>
-									<ul class="post-bar">
-										<li><i class="fa fa-calendar"></i> 2016-7-29</li>
-										<li>
-											<i class="fa fa-folder"></i>
-											<a href="#">Mockup</a>
-											<a href="#">Graphics</a>
-											<a href="#">Flayers</a>
-										</li>
-									</ul>
-									<a href="#" class="read-more">read more</a>
-								</div>
-							</div>
+									<div class="post-slide">
+										<div class="post-img">
+											<a href="#"><img src="{%static 'myblog/river/img/img-3.jpg'%}" alt=""></a>
+										</div>
+										<div class="post-content">
+											<h3 class="post-title"><a href="#">Latest News Post</a></h3>
+											<p class="post-description">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec elementum mauris. Praesent vehicula gravida dolor, ac efficitur sem sagittis.
+											</p>
+											<ul class="post-bar">
+												<li><i class="fa fa-calendar"></i> 2016-7-29</li>
+												<li>
+													<i class="fa fa-folder"></i>
+													<a href="#">Mockup</a>
+													<a href="#">Graphics</a>
+													<a href="#">Flayers</a>
+												</li>
+											</ul>
+											<a href="#" class="read-more">read more</a>
+										</div>
+									</div>
 
-							<div class="post-slide">
-								<div class="post-img">
-									<a href="#"><img src="{%static 'myblog/river/img/img-4.jpg'%}" alt=""></a>
-								</div>
-								<div class="post-content">
-									<h3 class="post-title"><a href="#">Latest News Post</a></h3>
-									<p class="post-description">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec elementum mauris. Praesent vehicula gravida dolor, ac efficitur sem sagittis.
-									</p>
-									<ul class="post-bar">
-										<li><i class="fa fa-calendar"></i> 2016-7-29</li>
-										<li>
-											<i class="fa fa-folder"></i>
-											<a href="#">Mockup</a>
-											<a href="#">Graphics</a>
-											<a href="#">Flayers</a>
-										</li>
-									</ul>
-									<a href="#" class="read-more">read more</a>
+									<div class="post-slide">
+										<div class="post-img">
+											<a href="#"><img src="{%static 'myblog/river/img/img-4.jpg'%}" alt=""></a>
+										</div>
+										<div class="post-content">
+											<h3 class="post-title"><a href="#">Latest News Post</a></h3>
+											<p class="post-description">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec elementum mauris. Praesent vehicula gravida dolor, ac efficitur sem sagittis.
+											</p>
+											<ul class="post-bar">
+												<li><i class="fa fa-calendar"></i> 2016-7-29</li>
+												<li>
+													<i class="fa fa-folder"></i>
+													<a href="#">Mockup</a>
+													<a href="#">Graphics</a>
+													<a href="#">Flayers</a>
+												</li>
+											</ul>
+											<a href="#" class="read-more">read more</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
 
 		<!--

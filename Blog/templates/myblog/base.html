@@ -12,7 +12,7 @@
 			background-color: rgb(242,242,242);
 			    background: #f2f2f2 url() !important;
 			    color: #525452;
-			    font-family: Raleway, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
+				font-family: Raleway, "Helvetica Neue" ;
 			    font-size: 18px;
 			    font-weight: normal;
 			    line-height: 1.85em;
@@ -85,6 +85,20 @@
 		    font-weight: normal;
 		    color: #fff !important;
 		}
+		.nav>li>a{
+			transition:none;
+			transition: color 0.25s ease-in-out;
+
+		}
+
+		.nav>li>a:focus{
+			background-color: black !important;
+		}
+		.nav>li>a:hover{
+			background-color: black !important;
+			color: #509BA0 !important;
+
+		}
 
 		.navbar-brand{
 		    padding: 29px 15px;
@@ -95,7 +109,7 @@
 		    border: none;
 		}
 		.navbar-nav{
-		    float: left;
+			margin-left: 380px;
 		}
 		nav.navbar.bootsnav ul.nav > li > a{
 		    color: #474747;
@@ -303,7 +317,7 @@
                             </button>
                         </div>
                         <div class="collapse navbar-collapse" id="navbar-menu">
-                            <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
+                            <ul class="nav navbar-nav tag_contain" data-in="fadeInDown" data-out="fadeOutUp">
                                 <li><a class="out_tag" href="#">Home</a></li>
                                 <li><a class="out_tag" href="#">About Us</a></li>
                                 <li class="dropdown">

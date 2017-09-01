@@ -12,232 +12,672 @@
 
 {%block style%}
 	<style type="text/css">
+a{
+			color: #343434;
+			transition: all 0.25s ease-in-out;
+		}
+		a:hover{
+				text-decoration: none !important;
+				color: #509BA0 !important;
+			}
 
 
-		.text{
-			margin:150px auto;
+		html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+		    margin: 0;
+		    padding: 0;
+		    border: 0;
+		    outline: 0;
+		    vertical-align: baseline;
+		    background: transparent;
+		}
+
+
+		h1, h2, h3, h4, h5, h6, .block1 p, .blog-category a, .post-meta a, .widget_wysija_cont .wysija-submit {
+			    font-family: Oswald, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
+			    color: #333;
+			}
+
+		form {
+		    display: block;
+		    margin-top: 0em;
+		}
+
+		input[type="text"], input[type="password"], input[type="email"], select, textarea {
+		    padding-left: 10px !important;
+		}
+
+		.widget_tag_cloud a{
+			background: #509BA0;
+		}
+
+		.m_cen{
+			padding-top: 70px;
+		}		
+
+		.list{
+		    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05);
+			background-color: #fff;
+			width: auto;
+			margin-bottom:50px;
 			position: relative;
 		}
 
-		.text .title{
-			font-size: 30px;
-			display: block;
-			margin-top: 20px;
+		/* banner */
+
+		#myCarousel{
+
 		}
 
-		.text .datetime{
+		/* cards */
+		.blog-category{
+			text-align: center;
+			font-size: 22px;
+			padding-top: 50px;
+		}
+
+		.blog-category a{
+			text-transform: uppercase;
+			font-style: normal;
+			color: #bbb;
+		}
+		.blog-category em:before{
+		    width: 80px;
+		    height: 8px;
+		    background: url(http://brixton.premiumcoding.com/demo5/wp-content/themes/brixton/images/brixton-border-left.png) 0 1px no-repeat;
+		    margin-top: 12px;
+		    margin-left: -90px;
+		    position: absolute;
+		    content: '';
+		}
+		
+		.blog-category em:after {
+		    width: 80px;
+		    height: 8px;
+		    background: url(http://brixton.premiumcoding.com/demo5/wp-content/themes/brixton/images/brixton-border-right.png) 0 1px no-repeat;
+		    margin-top: 12px;
+		    margin-left: 10px;
+		    position: absolute;
+		    content: '';
+		}
+
+
+
+
+
+		.topBlog .c_title{
+			padding: 0 30px;
+			font-size: 44px;
+			text-align: center;
+		    margin-bottom: 22px;
+		}
+
+		.topBlog .c_title a{
+			font-size: 100%;
+			color: #333;
+		}
+
+		.blogImage{
+			vertical-align: baseline;
+		}
+
+		.blogImage a{
+			transition: all 0.25s ease-in-out;
+		}
+
+		.blogImage img{
+			padding: 0 30px;
+			height: auto;
+			max-width: 740px;
+		}
+
+		.entry .meta{
+			padding: 0 30px;
+		}
+
+		.entry .blogContent {
+		    margin-top: 15px;
+		    margin-bottom: 30px;
+		}
+
+		.entry .blogContent .blog_content {
+		    margin-bottom: 0px;
+		    text-align: left;
+		    color: #444;
+		}
+
+		.blogContent .blog_content p{
+		    padding: 10px 0 15px 0;
+		    display: block;
+
+		}
+
+		.blog_content .read_more{
+			text-align: center;
+		}
+
+		.read_more a{
+		    font-family: Oswald, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
+		        position: relative;
+			    letter-spacing: 1px;
+			    text-align: center;
+			    border-bottom: 2px solid #fff;
+			    color: #333 !important;
+			    font-size: 22px;
+			    text-transform: uppercase;
+			    text-decoration: none !important;
+			    transition: 1s ease-in-out;
+		}
+
+		.read_more a:hover {
+		    border-bottom: 2px solid ;
+		}
+
+		.blogBottom,.author-info-wrap{
+			    float: left;
+			    width: 100%;
+			    padding: 0 30px;
+			    margin-left:-30px;
+		        background: url({%static 'myblog/images/card_border.png'%}) 2px 0px repeat-x;
+
+			}
+
+		.blogBottom .post-meta {
+		    text-align: center;
+		    margin: 40px 0;
+		    text-transform: uppercase;
+		    font-size: 16px;
+		    float: left;
+		    height: 47px;
+		    line-height: 47px;
+		    padding: 0 0 0 30px;
+		    margin-left: -45px;
+		    background: #333;
+		}		
+
+		.blogBottom .post-meta a{
+		    padding: 0px 3px;
+		    color: #fff !important;
+		    font-style: normal;
+		    display: inline;
+		    border-bottom: 1px solid #333;
+			transition: border 0.25s ease-in-out;
+		}		
+
+		.post-meta:after {
+		    width: 40px;
+		    height: 47px;
+		    background: url({%static 'myblog/images/right_stuff.png'%}) 0 0 no-repeat;
+		    margin-top: 0px;
+		    margin-left: 0px;
+		    position: relative;
+		    float: right;
+		    bottom: 0;
+		    right: -30px;
+		    content: '';
+		}
+
+		.post-meta a:hover{
+		    border-bottom: 1px solid #fff;
+		}
+
+		/* side */
+		.sidebar h1, h2, h3, h4, h5, h6 {
+		    font-weight: normal;
+		    line-height: 110%;
+		    color: #999;
+		}
+		.sidebar{
+		    padding: 0 10px 0 0px;
+		    margin-left:35px;
+			}
+
+		.sidebar .widget_search input, #footer .widget_search input {
+		    width: 95%;
+		}
+
+		.widget {
+		    margin: 0px 0 40px 20px;
+		    padding: 30px;
+		    border: none;
+		    background: none;
+		    float: left;
+		    width: 100%;
+		    background: #fff;
+		    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05);
+		}
+	
+		.widget h3 {
+		    font-size: 24px !important;
+		    text-transform: uppercase;
+		    padding-top: 3px;
+		    color: #444;
+		}
+
+		.social_icons a{
+			background-color: #509BA0;
+		}
+
+
+
+		.widget-line {
+		    width: 305px;
+		    margin-bottom: 20px;
+		    border-bottom: 2px solid #eee;
+		    position: relative;
+		    padding: 0 20px;
+		    margin: 0px 0 20px -20px;
+		    z-index: -1;
+		}
+
+		.recent_posts .widgett, .category_posts .widgett {
+		    margin: 0px 0 30px 0;
+		    padding-bottom: 25px;
+		    border-bottom: 1px solid #ededed;
+		    padding-right: 30px;
+		    padding-left: 30px;
+		    margin-left: -30px;
+		}
+		
+		.wttitle {
+		}
+
+		.wttitle h4{
+		    line-height: 18px;
+		    margin-top: 5px;
+		}
+
+		.wttitle h4 a{
+		    font-size: 16px !important;
+		}
+		
+		.widget ul {
+		    list-style: square !important;
+		    margin: 0;
+		    padding: 0;
+		}
+
+		.widget ul li {
+		    list-style-type: none;
+		    padding-left: 15px;
+		}
+
+		.widget ul li a {
+		    font-size: 15px;
+		    color: #999;
+		}
+
+		.widget_search form {
+		    height: 50px;
+		}
+
+		.widget_search form input{
+		    height: 44px;
+		    border: none;
+		    background: #eee;
+		    font-size: 15px;
+		    color: #aaa;
+		}
+
+		.sidebar .widget_search i, #footer .widget_search i{
+		    float: right;
+		    position: absolute;
+		    right: 50px;
+		    margin-top: -50px;
+		}
+
+		.widget.widget_text {
+		    color: #999;
+		    font-size: 16px;
+		}
+
+		.widget_tag_cloud a {
+		    font-size: 12px !important;
+		    text-transform: uppercase;
+		    color: #fff !important;
+		    padding: 0px 12px;
+		    margin-bottom: 4px !important;
+		    display: inline-block;
+		    border-radius: 2px;
+		}
+
+
+
+
+		/* pagenavi*/
+		.wp_pagenavi{
+			    margin: 0px 0 0px 0;
+		}
+		.wp_pagenavi ul li{
+			float:left;
+			margin: 10px;
+		    background: #fff;
+		    margin-right:1px;
+		    padding: 15px 18px;
+		    text-transform: uppercase;
+		    font-size: 16px;
+		    font-weight: bold;
+		    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.05);
+		}
+		
+
+		.wp-pagenavi a{
+		    color: #343434 !important;
+		}
+	
+		<!-- bottom -->
+
+		.bot1{
+			background-color: rgb(58,192,199);
+		}
+
+		.pagination{
+			position: relative;
+			left: 370px;
+		}
+
+
+		.book{
+			margin: 0 auto;
+		}
+
+		.social img{
+
+			float: left;
+			margin-left: 28px;
+		}
+		.hot{
+			margin: 20px auto;
+
+		}
+
+		.hot .hot_span{
 			font-size: 20px;
+			text-align: center;
 		}
 
-		.text .discribe{
-			margin-top: 25px;
-			height: 260px;
+		.tags {
+		    width: 100%;
+		    float: left;
+		    padding-bottom: 25px;
+		    font-style: italic;
+		    word-break: break-all;
 		}
 
-		.textImg{
-			margin-top: 75px;
-			bottom: 25px;
-			margin-bottom: 25px;
+		.tags i{	
+		    color: #000;
+		    font-size: 16px;
+		    margin-right: 5px;
 		}
-		.like{
-			width: 930px;
-			height: 330px;
-			background-color: gold;
-		}
-		.tags:nth-child{
-			position: absolute;
-			bottom: -5px;
-			text-decoration:underline;
-			color: #3AC0C7;
+		
+		.tags a{
+		    font-style: italic;
 		}
 
+		.author-info-wrap {
+		    padding: 35px 0px 27px 0px;
+		    margin-top: 0px;
+		    float: left;
+		    width: 100%;
+		}
 
+		.blogAuthor {
+		    float: left;
+		}
+
+		.authorBlogName {
+		    position: relative;
+		    text-transform: uppercase;
+		    font-size: 18px;
+		    font-weight: bold;
+		    width: 100%;
+		}
+
+		.author-info-wrap .bibliographical-info {
+		    padding-right: 25px;
+		}
+
+		.author-info-wrap .blogAuthor img {
+		    margin-left: 25px;
+		}
+
+		.blogAuthor img {
+		    margin-right: 25px;
+		    border-radius: 90%;
+		}
 	</style>
 {%endblock%}
 {%block body%}
 
-	<div class="container text">
-		<botton class="btn btn-default">tag</botton>
-		<a class="title" href="">{{artical.title}}</a>
-		<div class="datetime">{{artical.pub_date}}</div>
-		<div class="discribe">
-			<p>
-			{{artical.content}}</p>
-			<br>
-			<p>	{{artical.content}}</p>
+<div class="container m_cen">
+		<div class="row">
+			<div class="col-xs-8 mtain">
+					<div class="list row">
+						<div class="col-xs-12">
+							<div class="topBlog">
+								<div class="blog-category">
+									<em>
+										<a href="">fashion</a>
+									</em>
+								</div>
+								<h2 class="c_title">
+									<a href="/artical/{{artical.id}}">my artical</a>
+								</h2>
+							</div>
+							<div class="blogImage">
+								<a href="">
+									<img class="img-responsive" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2016/03/manly1-1180x650.jpg">
+								</a>
+							</div>
+							<div class="entry">
+								<div class="meta">
+									<div class="blogContent">
+										<div class="blog_content">
+											<p>
+												Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsanet iusto odio dignissim qui blandit praesent. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+											</p>
+											<p>
+												Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit.
+											</p>
+										</div>
+									</div>
+									<div class="tags">
+										<i class="fa fa-tags"></i>
+										<a href="">dinner</a>,
+										<a href="">food</a>,
+										<a href="">lifestyle</a>,
+									</div>
+									<div class="blogBottom">
+										<div class="post-meta">
+											<a class="post-meta-time" href="">May 23, 2014</a>
+											<a class="post-meta-author" href="">by Monkey</a>
+										</div>
+									</div>
+									<div class="author-info-wrap">
+										<div class="blogAuthor">
+											<a href="">
+												<img width="100" height="100" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2015/02/brixton-avatar-150x150.jpg" class="avatar avatar-100 wp-user-avatar wp-user-avatar-100 photo avatar-default" alt="">
+											</a>
+										</div>
+										<div class="authorBlogName">Written by Monkey</div>
+										<div class="bibliographical-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquam massa quis mauris sollicitudin commodo venenatis ligula commodo.</div>
+									</div>
+
+								</div>
+							</div>
+							 <!--
+							<div><span class="datetime">{{i.email}}</span></div>
+							<div class="discribe ">{{artical.content}}</div>
+							<a href="/artical/{{artical.id}}"><botton class="btn btn-default">阅读</botton></a>
+							-->
+						</div>
+					</div>
+			</div>
+			
+				<!-- right-bar-->
+
+			<div class="right_info col-xs-4 col-md-4 hidden-xs">
+				<div class="row">
+					<div class="sidebar ">
+						<div class="widget widget_text">
+							<h3>About me</h3>
+							<div class="widget_line"></div>
+							<div class="textwidget">
+								<img src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2015/02/brixton-avatar.jpg">
+								Hello, my name is Monkey  I am a blogger living in New York. This is my blog, where I post my photos, fashion trends and tips about the fashion world. Never miss out on new stuff.
+							</div>
+						</div>
+			
+						<!-- widget_text over-hear -->
+
+						<div class="widget socials">
+							<div class="widgett">
+								<div class="social_icons">
+									<div>
+										<a href="">
+											<i class="fa fa-some"></i>
+										</a>
+										<a href="">
+											<i class="fa fa-some"></i>
+										</a>
+										<a href="">
+											<i class="fa fa-some"></i>
+										</a>
+										<a href="">
+											<i class="fa fa-some"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- social over-hear -->
+
+						<div class="widget category_posts">
+							<h3>Popular Posts</h3>
+							<div class="widget-line"></div>
+							<div class="widgett">
+								<div class="imgholder">
+									<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
+										<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+									</a>
+								</div>
+								<div class="wttitle">
+									<h4>
+										<a href="">OUT TRIP INTO THE WILD</a>
+									</h4>
+								</div>
+							</div>
+							<div class="widgett">
+								<div class="imgholder">
+									<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
+										<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+									</a>
+								</div>
+								<div class="wttitle">
+									<h4>
+										<a href="">A PERFECT SUIT FOR YOUR NEXT MEETING</a>
+									</h4>
+								</div>
+							</div>
+							<div class="widgett">
+								<div class="imgholder">
+									<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
+										<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+									</a>
+								</div>
+								<div class="wttitle">
+									<h4>
+										<a href="">PREPARE FOOD LIKE A CHEF</a>
+									</h4>
+								</div>
+							</div>
+							<div class="widgett">
+								<div class="imgholder">
+									<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
+										<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+									</a>
+								</div>
+								<div class="wttitle">
+									<h4>
+										<a href="">HOW TO BECOME YOUR OWN BOSS</a>
+									</h4>
+								</div>
+							</div>
+						</div>
+						<!-- category_posts over-hear -->
+						<div class="widget widget_categories">
+							<h3>Categories</h3>
+							<div class="widget-line"></div>
+							<ul>
+								<li class="cat-item cat-item-1"><a href="">Editor's choice</a></li>
+								<li class="cat-item cat-item-2"><a href="">Fashion</a></li>
+								<li class="cat-item cat-item-3"><a href="">Front Page Slideshow</a></li>
+								<li class="cat-item cat-item-4"><a href="">Lifestyle</a></li>
+								<li class="cat-item cat-item-5"><a href="">Photography</a></li>
+								<li class="cat-item cat-item-6"><a href="">Travel</a></li>
+							</ul>
+						</div>
+						<!-- widget_categories over-hear -->
+						<div class="widget widget_search">
+							<h3>SEARCH</h3>
+							<div class="widget-line"></div>
+							<form method="get" class="searchform" action="">
+								<input type="text" value="Search and hit Enter...">
+								<i class="fa fa-search search-desktop"></i>
+							</form>
+						</div>
+						<!-- widget_search over-hear -->
+						<div class="widget widget_text">
+							<h3>Advertising section</h3>
+							<div class="widget-line"></div>
+							<div class="textwidget">
+								<a href=""><img src="" alt=""></a>
+							</div>
+						</div>
+						<!-- widget_text1 over-hear -->
+						<div class="widget widget_tag_cloud">
+							<h3>Tags</h3>
+							<div class="widget-line"></div>
+							<div class="tagcloud">
+								<a href="" class="tag-link-1 tag-link-position-1" style="font-size: 8pt;">1</a>
+								<a href="" class="tag-link-2 tag-link-position-2" style="font-size: 8pt;">2</a>
+								<a href="" class="tag-link-3 tag-link-position-3" style="font-size: 8pt;">3</a>
+								<a href="" class="tag-link-4 tag-link-position-4" style="font-size: 8pt;">4</a>
+								<a href="" class="tag-link-5 tag-link-position-5" style="font-size: 8pt;">5</a>
+								<a href="" class="tag-link-6 tag-link-position-6" style="font-size: 8pt;">6</a>
+								<a href="" class="tag-link-7 tag-link-position-7" style="font-size: 8pt;">7</a>
+								<a href="" class="tag-link-8 tag-link-position-8" style="font-size: 8pt;">8</a>
+								<a href="" class="tag-link-9 tag-link-position-9" style="font-size: 8pt;">9</a>
+								<a href="" class="tag-link-10 tag-link-position-10" style="font-size: 8pt;">10</a>
+								<a href="" class="tag-link-11 tag-link-position-11" style="font-size: 8pt;">11</a>
+								<a href="" class="tag-link-12 tag-link-position-12" style="font-size: 8pt;">12</a>
+								<a href="" class="tag-link-13 tag-link-position-13" style="font-size: 8pt;">13</a>
+								<a href="" class="tag-link-14 tag-link-position-14" style="font-size: 8pt;">14</a>
+								<a href="" class="tag-link-15 tag-link-position-15" style="font-size: 8pt;">15</a>
+								<a href="" class="tag-link-16 tag-link-position-16" style="font-size: 8pt;">16</a>
+								<a href="" class="tag-link-17 tag-link-position-17" style="font-size: 8pt;">17</a>
+								<a href="" class="tag-link-18 tag-link-position-18" style="font-size: 8pt;">18</a>
+							</div>
+						</div>
+						<!-- widget_tag_cloud over-hear -->
+						<div class="widget widget_fbw_id">
+							<h3>Like Us On Facebook</h3>
+							<div class="widget-line"></div>
+							<div id="container">
+								<div class="sections">
+									<div class="section" id="section0"><h3></h3></div>
+									<div class="section" id="section1"><h3></h3></div>
+									<div class="section" id="section2"><h3></h3></div>
+									<div class="section" id="section3"><h3></h3></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="textImg"><img class = "img-responsive center-block" src="{%static 'myblog/images/list.webp'%}" alt=""></div>
-		<div class="tags">
-			<span>tags:</span>
-			<a href="">A</a>
-			<a href="">B</a>
-			<a href="">C</a>
-			<a href="">D</a>
-		</div>
-	</div>
-
-	<div class="container">
-		<h3>你可能喜欢</h3>
-		<div class="like">滚动</div>
-	</div>
 
 
 
-<!--
-    此评论textarea文本框部分使用的https://github.com/alexdunphy/flexText此插件
--->
-<div class="commentAll">
-    <!--评论区域 begin-->
-    <div class="reviewArea clearfix">
-        <textarea class="content comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)"></textarea>
-        <a href="javascript:;" class="plBtn">评论</a>
-    </div>
-    <!--评论区域 end-->
-    <!--回复区域 begin-->
-    <div class="comment-show">
-        
-    </div>
-	<div>
-		{% for index in comments.paginator.page_range %}
-	  	<a href="" class="ch_page" onclick="return false">{{index}}</a>
-		{% endfor %}
-	</div>
-    <!--回复区域 end-->
-</div>
 
-
-
-<script type="text/javascript" src="{%static 'myblog/comment/js/jquery-1.12.0.min.js'%}"></script>
-<script type="text/javascript" src="{%static 'myblog/comment/js/jquery.flexText.js'%}"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-		{%for i in comments%}
-			var oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="{%static 'myblog/comment/images/header-img-comment_03.png'%}" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">David Beckham : </a> <span class="my-pl-con">&nbsp;{{i.text}}</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">{{i.pub_time}}</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
-			$('.reviewArea').after(oHtml)
-		{%endfor%}
-		$('.ch_page').click(function () {
-		    var num = $(this).text();
-		    var pdata = {'atitle':$('.title').text()};
-			$.post('/get_comments/'+ num,pdata,function (data) {
-				var comments = data.comments
-			    $.each(comments,function (index,item) {
-			        $('.comment-show-con').eq(index).find('.my-pl-con').text(item['text'])
-
-                })
-            })
-        })
-    })
-</script>
-<!--textarea高度自适应-->
-<script type="text/javascript">
-    $(function () {
-        $('.content').flexText();
-
-    });
-</script>
-<!--textarea限制字数-->
-<script type="text/javascript">
-    function keyUP(t){
-        var len = $(t).val().length;
-        if(len > 139){
-            $(t).val($(t).val().substring(0,140));
-        }
-    }
-</script>
-<!--点击评论创建评论条-->
-<script type="text/javascript">
-    $('.commentAll').on('click','.plBtn',function(){
-        var myDate = new Date();
-        //获取当前年
-        var year=myDate.getFullYear();
-        //获取当前月
-        var month=myDate.getMonth()+1;
-        //获取当前日
-        var date=myDate.getDate();
-        var h=myDate.getHours();       //获取当前小时数(0-23)
-        var m=myDate.getMinutes();     //获取当前分钟数(0-59)
-        if(m<10) m = '0' + m;
-        var s=myDate.getSeconds();
-        if(s<10) s = '0' + s;
-        var now=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
-        //获取输入内容
-        var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
-        console.log(oSize);
-        //动态创建评论模块
-        oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="{%static 'myblog/comment/images/header-img-comment_03.png'%}" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">David Beckham : </a> <span class="my-pl-con">&nbsp;'+ oSize +'</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
-        if(oSize.replace(/(^\s*)|(\s*$)/g, "") != ''){
-            $(this).parents('.reviewArea ').siblings('.comment-show').prepend(oHtml);
-            $(this).siblings('.flex-text-wrap').find('.comment-input').prop('value','').siblings('pre').find('span').text('');
-        }
-		var aname = $('.title').text();
-        var json = {
-            'name':'大卫',
-			'text':oSize,
-			'time':now,
-			'aname':aname
-		};
-		$.post('/send_data',json,function (data,status) {
-		    alert('成功')
-            })
-    });
-</script>
-<
-<!--删除评论块-->
-<script type="text/javascript">
-    $('.commentAll').on('click','.removeBlock',function(){
-        var oT = $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con');
-        if(oT.siblings('.all-pl-con').length >= 1){
-            oT.remove();
-        }else {
-            $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con').parents('.hf-list-con').css('display','none')
-            oT.remove();
-        }
-        $(this).parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').remove();
-
-    })
-</script>
-<!--点赞-->
-<script type="text/javascript">
-    $('.comment-show').on('click','.date-dz-z',function(){
-        var zNum = $(this).find('.z-num').html();
-        if($(this).is('.date-dz-z-click')){
-            zNum--;
-            $(this).removeClass('date-dz-z-click red');
-            $(this).find('.z-num').html(zNum);
-            $(this).find('.date-dz-z-click-red').removeClass('red');
-        }else {
-            zNum++;
-            $(this).addClass('date-dz-z-click');
-            $(this).find('.z-num').html(zNum);
-            $(this).find('.date-dz-z-click-red').addClass('red');
-        }
-    })
-</script>
-
-<!--
-<script type="text/javascript">
-	console.info('hello');
-	function csole() {
-	    var list = $('.comment-show-con');
-	    var aname = $('.title').text();
-		$.each(list,function (index,item) {
-			var json = {
-			    'name':list.eq(index).find('.comment-size-name').html(),
-				'text':list.eq(index).find('.my-pl-con').html(),
-				'time':list.eq(index).find('.date-dz-left').html(),
-				'like':list.eq(index).find('.z-num').html(),
-				'aname':aname
-
-			};
-			console.info(json);
-			$.post('/send_data',json,function (data,status) {
-            })
-    })
-    }
-	time = setInterval("csole()",3000);
-
-</script>
--->
 
 {%endblock%}
