@@ -8,11 +8,34 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/reset.css'%}">
     <link rel="stylesheet" href="{%static 'myblog/comment/css/style.css'%}">
     <link rel="stylesheet" href="{%static 'myblog/comment/css/comment.css'%}">
+
+    	    <!-- fonts -->
+	<link rel="dns-prefetch" href="//use.fontawesome.com">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="stylesheet" id="googleFonts-css" href="https://fonts.googleapis.com/css?family=Raleway:400,600,700|Oswald|Oswald|Playfair%20Display:400,400italic" type="text/css" media="all">
+	<link href="http://fonts.googleapis.com/css?family=Roboto+Slab%3A400%2C700" rel="stylesheet" property="stylesheet" type="text/css" media="all">
+	<link href="http://fonts.googleapis.com/css?family=Roboto%3A900%2C700" rel="stylesheet" property="stylesheet" type="text/css" media="all">
+	<link href="http://fonts.googleapis.com/css?family=Oswald%3A700%2C400" rel="stylesheet" property="stylesheet" type="text/css" media="all">
+	<link href="http://fonts.googleapis.com/css?family=Raleway%3A700%2C900" rel="stylesheet" property="stylesheet" type="text/css" media="all">
+	<link rel="stylesheet" id="googleFonts-css" href="https://fonts.googleapis.com/css?family=Raleway:400,600,700|Oswald|Oswald|Playfair%20Display:400,400italic" type="text/css" media="all">
+
+
 {%endblock%}
 
 {%block style%}
 	<style type="text/css">
-a{
+
+		body {
+		    background-color: rgb(242,242,242);
+		    background: #f2f2f2 url() !important;
+		    color: #525452;
+		    font-family: Raleway, "Helvetica Neue";
+		    font-size: 18px;
+		    font-weight: normal;
+		    line-height: 1.85em;
+		}
+
+		a{
 			color: #343434;
 			transition: all 0.25s ease-in-out;
 		}
@@ -20,6 +43,22 @@ a{
 				text-decoration: none !important;
 				color: #509BA0 !important;
 			}
+
+		.list a img{
+			transition: all 0.25s ease-in-out;		}
+
+		.list a img:hover{
+			opacity: 0.9;
+		}
+
+		.category_posts a img,.relatedPosts a img:hover{
+			transition: opacity 0.25s ease-in-out;		
+		}
+
+		.category_posts a img:hover,.relatedPosts a img:hover{
+			opacity: 0.9;
+		}
+
 
 
 		html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
@@ -567,6 +606,110 @@ a{
 			background-color: rgb(80,155,160);
 		    color : white;
 		}
+
+		/* comment-form*/
+		.commentform{
+			margin-bottom: 0;
+		    float: left;
+		    width: 100%;
+		    background: #fff;
+		    padding-top: 10px;
+		    margin-top: 1px;
+		    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05);
+
+		}
+
+		.post-comments-title {
+		    text-align: center;
+		}
+
+		.related, .post-comments-title {
+		    float: left;
+		    width: 100%;
+		}
+		
+		.post-comments{
+		    margin-top: 40px;
+		    color: #333;
+    		font-size: 30px !important;
+		}
+
+		.relatedtitle h4, .commentlist h4.post-comments, h4.post-comments {
+		    display: inline-block;
+		    margin-bottom: 20px;
+		}
+
+		.relatedtitle, .commentlist .post-comments, h4.post-comments {
+		    text-align: center;
+		    text-transform: uppercase;
+		}
+
+		h3#reply-title, select, input, textarea, button, .link-category .title a {
+		    font-family: Raleway, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
+		}
+
+		small {
+		    font-size: 14px;
+		    font-weight: normal;
+		}
+
+		h3#reply-title small a {
+		    background: #bbb;
+		    color: #fff;
+		    border-radius: 3px;
+		    padding: 12px 15px;
+		    text-transform: uppercase;
+		}
+
+		textarea#comment {
+		    width: 91%;
+		    margin-left: 25px;
+		}
+
+		form .commentfield {
+		    margin-left: 25px;
+		}
+
+		textarea {
+		    overflow: auto;
+		    padding-left: 10px !important;
+		}
+
+		input, select, textarea {
+		    padding: 5px;
+		    color: #4c4c4c;
+		    outline: none;
+		    background-color: #fff;
+		    border: 1px solid #e7e7e7;
+		    border-bottom: 1px solid #D9D9D9;
+		}
+		
+		select, input, textarea, button {
+		    font: 99% sans-serif;
+		    margin-bottom: 20px;
+		}
+
+		.form-submit{
+			margin: 18px 0 27px 0;
+		}
+
+		#submit {
+		    text-transform: uppercase;
+		    font-size: 14px;
+		    padding: 12px 20px;
+		    border-radius: 2px;
+		    background: #bbb;
+		    color: #fff;
+		    margin-left: 25px;
+		    transition: all 0.25s ease-in-out;
+		}
+		
+		#submit:hover{
+			background-color: rgb(80,155,160);
+		}
+
+
+
 	</style>
 {%endblock%}
 {%block body%}
@@ -671,7 +814,45 @@ a{
 								</a>
 							</div>
 						</div>
-			</div>
+						
+						<div class="commentform">
+							<div class="titleborderOut">
+								<div class="titleborder"></div>
+							</div>
+							<div class="post-comments-title">
+								<h4 class="post-comments">Leave a Comment</h4>
+							</div>
+							<div class="comment-respond">
+								<h3 class="comment-reply-title">
+									<!-- <small><a href="" id="cancel-comment-reply-link">Cancel Reply</a></small> -->
+								</h3>
+								<form action="" method="post" class="comment-form">
+									<div>
+										<textarea name="comment" id="comment" cols="45" rows="8" tabindex="4" aria-required="true"></textarea>
+									</div>
+									<div class="commentfield">
+										<labelp for="author">Name
+											<small>(required)</small>
+										</labelp>
+										<br>
+										<input type="text" name="author" id="author" tabindex="1">
+									</div>
+									<div class="commentfield">
+										<labelp for="email">Mail
+											<small>(required)</small>
+										</labelp>
+										<br>
+										<input type="text"  id="email" tabindex="1">
+									</div>
+									<p class="form-submit">
+										<input name="submit" type="submit" id="submit" class="submit" value="Leave a Comment">
+									</p>
+								</form>
+							</div>
+						</div>
+						
+
+					</div>
 			
 				<!-- right-bar-->
 
@@ -835,9 +1016,7 @@ a{
 				</div>
 			</div>
 		</div>
-
-
-
+	</div>
 
 
 {%endblock%}
