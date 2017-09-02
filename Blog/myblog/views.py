@@ -20,7 +20,7 @@ def index(request,pagenum):
     return render(request,'myblog/index.html',context)
 """
 
-def index(request):
+def index(request,classi):
     user = User.objects.all()
     user1 = User.objects.get(name='yin')
     artical = user1.artical_set.get(pk=1)

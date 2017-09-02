@@ -5,3 +5,5 @@ from django.contrib import admin
 
 admin.site.register(User)
 admin.site.register(Artical)
+admin.site.register(Comment)
+

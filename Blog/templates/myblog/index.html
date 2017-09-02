@@ -79,9 +79,15 @@
 						$('.list').eq(index).find('.atitle').text(item);
 						$('.list').eq(index).find('.blog_content').text(item);
 
-
 				});
 			});
+			if(Number(num)>2){
+			    var page_bottons = $('.ch_page');
+				$.each(page_bottons,function (index,item) {
+				    console.info(num,index);
+					$(this).text(Number(num)-1+index)
+                })
+			}
 
     });
 
@@ -128,6 +134,21 @@
 
 		input[type="text"], input[type="password"], input[type="email"], select, textarea {
 		    padding-left: 10px !important;
+		}
+
+		.list a img{
+			transition: all 0.25s ease-in-out;		}
+
+		.list a img:hover{
+			opacity: 0.9;
+		}
+
+		.category_posts a img,.relatedPosts a img:hover{
+			transition: opacity 0.25s ease-in-out;		
+		}
+
+		.category_posts a img:hover,.relatedPosts a img:hover{
+			opacity: 0.9;
 		}
 
 		.widget_tag_cloud a{
@@ -183,10 +204,46 @@
 		    position: absolute;
 		    content: '';
 		}
+		
+		/* art card in cards*/
+		.blogpostcategory {
+		    padding: 20px 0 40px 0;
+		    font-size: 34px;
+		    line-height: 52px;
+		    font-style: italic;
+		    transition: all 0.25s ease-in-out;
+		    font-family: Playfair Display, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
+		}
+
+		.blogpostcategory .meta {
+		    padding: 0 30px;
+		}
+
+		.blogpostcategory p{
+		    color: #aaa;
+		    border-bottom: 1px dashed #e5e5e5;
+		    border-top: 1px dashed #e5e5e5;
+		    padding: 35px 0px !important;
+		    text-align: center;
+		    margin: 1em 0 0 0 !important;
+			}
+
+		.blogpostcategory .blogcontent-title {
+		    text-align: center;
+		}
+
+		.blogpostcategory:hover{
+			background-color: rgb(34,34,34);
+			color: white !important;
+		}
+
+		.blogpostcategory:hover p{
+			color:white;
+		}
 
 
 
-
+		/* art card in cards done here*/
 
 		.topBlog .c_title{
 			padding: 0 30px;
@@ -376,7 +433,7 @@
 
 		.wttitle h4{
 		    line-height: 18px;
-		    margin-top: 5px;
+		    margin-top: 9px;
 		}
 
 		.wttitle h4 a{
@@ -723,7 +780,22 @@
 							-->
 						</div>
 					</div>
+					
 				{%endfor%}
+				<div class="list row blogpostcategory">
+					<div class="col-xs-12">
+						<div class="entry">
+							<div class="meta">
+								<div class="blogContent">
+									<div class="blog_content">
+										<p>We must let go of the life we have planned, so as to accept the one that is waiting for us.</p>
+									</div>
+								</div>
+								<div class="blogcontent-title">Joseph Campbell </div>
+							</div>
+						</div>
+					</div>	
+				</div>
 			</div>
 			
 				<!-- right-bar-->
@@ -899,7 +971,9 @@
 				<ul>
 					<li><a href="" class="prev_page" onclick="return false">«</a></li>
 					{% for index in data.paginator.page_range %}
+					{% if forloop.counter < 5%}
 						<li><a class="ch_page" href="" onclick="return false">{{index}}</a></li>
+					{% endif %}
 					{% endfor %}
 					<li><a href="" class="next_page" onclick="return false">»</a></li>
 				</ul>

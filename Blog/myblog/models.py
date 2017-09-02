@@ -13,9 +13,8 @@ class Artical(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
     pub_time = models.DateTimeField()
-    tag = models.CharField(max_length=15)
+    tag = models.CharField(max_length=15,default='lifestyle')
     user = models.ForeignKey(User)
-    #content_url = models.CharField(max_length=30)
     img_url = models.CharField(max_length=100)
     def __str__(self):
         return self.title.encode('utf-8')
@@ -26,4 +25,4 @@ class Comment(models.Model):
     text = models.CharField(max_length=300)
     artical = models.ForeignKey(Artical)
     def __str__(self):
-        return self.artical.encode('utf-8')
+        return self.name.encode('utf-8')
