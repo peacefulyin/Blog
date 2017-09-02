@@ -13,6 +13,7 @@ class Artical(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
     pub_time = models.DateTimeField()
+    tag = models.CharField(max_length=15)
     user = models.ForeignKey(User)
     #content_url = models.CharField(max_length=30)
     img_url = models.CharField(max_length=100)

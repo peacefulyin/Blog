@@ -6,7 +6,25 @@
 	{%block source%}{%endblock%}
 	{%block js%}{%endblock%}
 	{%load static from staticfiles%}
-	
+
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			$(window).scroll(function () {
+
+			    var rela_top = $('#myCarousel').offset().top;
+				var n_navi_top = $('.n_navi_fixed').offset().top;
+			    console.info(n_navi_top);
+				if(n_navi_top>rela_top){
+					$('.n_navi_fixed').slideDown("slow");
+				}
+				else {
+					$('.n_navi_fixed').slideUp("slow");
+				}
+            });
+        })
+	</script>
 	<style>
 		body{
 			background-color: rgb(242,242,242);
@@ -57,9 +75,11 @@
 			background-color: black;
 		}
 
-		.pd_navi{
+		.pd_navi,.n_navi_fixed{
 			height: auto !important;
 		}
+
+
 
 		.n_navi_1{
 			margin: 0 !important; 
@@ -72,10 +92,10 @@
 	    	border-bottom: 5px solid #000;
 	    	height: 60px;
 		}
+
 		.pd_navi{
 			padding-left: 0;
 			padding-right: 0;
-
 		}
 
 		.nav .out_tag{
@@ -85,6 +105,7 @@
 		    font-weight: normal;
 		    color: #fff !important;
 		}
+
 		.nav>li>a{
 			transition:none;
 			transition: color 0.25s ease-in-out;
@@ -97,7 +118,6 @@
 		.nav>li>a:hover{
 			background-color: black !important;
 			color: #509BA0 !important;
-
 		}
 
 		.navbar-brand{
@@ -132,7 +152,6 @@
 		    width: 100%;
 		}
 		nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle:after{
-		    content: "+";
 		    font-family: 'FontAwesome';
 		    font-size: 16px;
 		    font-weight: 500;
@@ -160,7 +179,41 @@
 		    nav.navbar.bootsnav ul.nav > li:hover{ background: transparent; }
 		    nav.navbar.bootsnav ul.nav > li > a{ margin: 0; }
 		}
+		
+		/* n_navi_fixed*/
+		.n_navi_fixed{
+			z-index:999;
+			width: 100%;
+			position: fixed;
+			left: 0;
+			top:0;
+			display: none;
+		}
 
+		.n_navi_fixed .nav .out_tag{
+			padding: 15px 15px 20px 15px;
+			font-size: 16px;
+			font-family: Oswald !important;
+		    font-weight: normal;
+		    color: #333 !important;;
+		}
+		
+		.n_navi_fixed #navbar-menu{
+			background-color: white;
+			border:none;
+		}
+
+		.n_navi_fixed .navbar-nav{
+			margin-left: 750px;
+		}
+
+		.n_navi_fixed .nav>li>a:focus{
+			background-color: white !important;
+		}
+		.n_navi_fixed .nav>li>a:hover{
+			background-color: white !important;
+			color: #509BA0 !important;
+		}
 		/* footer*/
 		/*
 		.widget {
@@ -286,7 +339,6 @@
 
 	</style>
 	{%block style%}{%endblock%}
-{%load static from staticfiles%}
 </head>
 <body>
 	
@@ -320,9 +372,10 @@
                         <div class="collapse navbar-collapse" id="navbar-menu">
                             <ul class="nav navbar-nav tag_contain" data-in="fadeInDown" data-out="fadeOutUp">
                                 <li><a class="out_tag" href="#">Home</a></li>
-                                <li><a class="out_tag" href="#">About Us</a></li>
+                                <li><a class="out_tag" href="#">LIFESTYLE</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="out_tag dropdown-toggle" data-toggle="dropdown">Shortcodes</a>
+                                    <a href="#" class="out_tag dropdown-toggle" data-toggle="dropdown">PIANO</a>
+                                    <!--  
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Custom Menu</a></li>
                                         <li><a href="#">Custom Menu</a></li>
@@ -348,9 +401,10 @@
                                         <li><a href="#">Custom Menu</a></li>
                                         <li><a href="#">Custom Menu</a></li>
                                     </ul>
+                                    -->
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="out_tag dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                    <a href="#" class="out_tag dropdown-toggle" data-toggle="dropdown">science</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Custom Menu</a></li>
                                         <li><a href="#">Custom Menu</a></li>
@@ -377,8 +431,7 @@
                                         <li><a href="#">Custom Menu</a></li>
                                     </ul>
                                 </li>
-                                <li><a class="out_tag" href="#">Portfolio</a></li>
-                                <li><a class="out_tag" href="#">Contact Us</a></li>
+                                <li><a class="out_tag" href="#">Contact Me</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -386,6 +439,88 @@
             </div>
         </div>
     </div>
+
+    	<div class="n_navi_fixed">
+        <div class="container-fluid">
+            <div class="row nav_row1">
+                <div class="col-md-12 pd_navi">
+                    <nav class="navbar navbar-default navbar-mobile bootsnav n_navi_1">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbar-menu">
+                            <ul class="nav navbar-nav tag_contain" data-in="fadeInDown" data-out="fadeOutUp">
+                                <li><a class="out_tag" href="#">Home</a></li>
+                                <li><a class="out_tag" href="#">LIFESTYLE</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="out_tag dropdown-toggle" data-toggle="dropdown">PIANO</a>
+                                    <!--  
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Sub Menu</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Custom Menu</a></li>
+                                                <li><a href="#">Custom Menu</a></li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Sub Menu</a>
+                                                    <ul class="dropdown-menu multi-dropdown">
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Custom Menu</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                    </ul>
+                                    -->
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="out_tag dropdown-toggle" data-toggle="dropdown">science</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Custom Menu</a></li>
+                                                <li><a href="#">Custom Menu</a></li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+                                                    <ul class="dropdown-menu multi-dropdown">
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                        <li><a href="#">Custom Menu</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Custom Menu</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                        <li><a href="#">Custom Menu</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="out_tag" href="#">Contact Me</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 {%block body%}{%endblock%}

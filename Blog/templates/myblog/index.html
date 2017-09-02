@@ -26,12 +26,12 @@
 	<link href="http://fonts.googleapis.com/css?family=Roboto%3A900%2C700" rel="stylesheet" property="stylesheet" type="text/css" media="all">
 	<link href="http://fonts.googleapis.com/css?family=Oswald%3A700%2C400" rel="stylesheet" property="stylesheet" type="text/css" media="all">
 	<link href="http://fonts.googleapis.com/css?family=Raleway%3A700%2C900" rel="stylesheet" property="stylesheet" type="text/css" media="all">
+	<link rel="stylesheet" id="googleFonts-css" href="https://fonts.googleapis.com/css?family=Raleway:400,600,700|Oswald|Oswald|Playfair%20Display:400,400italic" type="text/css" media="all">
 
 {%endblock%}
 {% block js%}
 <script>
 	$(document).ready(function() {
-
 
 		<!-- river -->
         $("#news-slider").owlCarousel({
@@ -63,6 +63,8 @@
         }
 		-->
 
+
+
 		var url = window.location.href;
 		page_num = url.split('/').pop();
 		$('.next_page').attr('href',Number(page_num) + 1);
@@ -72,13 +74,14 @@
 
 		$('.ch_page').click(function () {
 			var num = $(this).text();
-			$.get('/getjson/'+num,function (dic) {
-				cen2 = $('.cen2');
+			$.get('/getArticals/'+num,function (dic) {
 				$.each(dic.a,function (index,item) {
-						$('.list').eq(index).find('.atitle').html(item)
+						$('.list').eq(index).find('.atitle').text(item);
+						$('.list').eq(index).find('.blog_content').text(item);
+
+
 				});
 			});
-			<!--$('.list:lt(2)').remove(); 				var clist = $('.list').clone(true)[0];  -->
 
     });
 
@@ -208,7 +211,6 @@
 		.blogImage img{
 			padding: 0 30px;
 			height: auto;
-			max-width: 740px;
 		}
 
 		.entry .meta{
@@ -335,7 +337,17 @@
 		}
 
 		.social_icons a{
-			background-color: #509BA0;
+			background-color: #509BA0 !important;
+			float: left;
+		    background: #eee;
+		    margin-right: 13px;
+		    width: 44px;
+		    height: 44px !important;
+		    border-radius: 90%;
+		    line-height: 44px;
+		    text-align: center;
+		    color: #fff;
+		    font-size: 17px;
 		}
 
 
@@ -380,6 +392,17 @@
 		.widget ul li {
 		    list-style-type: none;
 		    padding-left: 15px;
+		}
+
+		.widget_categories ul li:before {
+		    width: 6px;
+		    height: 6px;
+		    background: #509BA0;
+		    margin-top: 15px;
+		    margin-left: -15px;
+		    position: absolute;
+		    border-radius: 1px;
+		    content: '';
 		}
 
 		.widget ul li a {
@@ -515,9 +538,17 @@
 
 
 	<!-- 三图river -->
-		.post-slide{
+		.post-slide,{
 		    margin: 0 25px;
 		}
+
+		.post-content,.post-img{
+		    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.05) !important;
+
+		}
+
+
+
 		.post-slide .post-img{
 		    overflow: hidden;
 		}
@@ -640,7 +671,7 @@
 
 	<div class="container m_cen">
 		<div class="row">
-			<div class="col-xs-8 mtain">
+			<div class="col-md-8 col-xs-12 col-sm-12 mtain">
 				{%for i in data%}
 					<div class="list row">
 						<div class="col-xs-12">
@@ -651,13 +682,15 @@
 									</em>
 								</div>
 								<h2 class="c_title">
-									<a href="/artical/{{artical.id}}">{{artical.title}}</a>
+									<a class="atitle" href="/artical/{{artical.id}}">{{artical.pub_time}}</a>
 								</h2>
 							</div>
-							<div class="blogImage">
-								<a href="">
-									<img class="img-responsive" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2016/03/manly1-1180x650.jpg">
-								</a>
+							<div class="row">
+								<div class="blogImage col-xs-12">
+									<a href="">
+										<img class="img-responsive img-rounded" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2016/03/manly1-1180x650.jpg">
+									</a>
+								</div>
 							</div>
 							<div class="entry">
 								<div class="meta">
@@ -695,15 +728,17 @@
 			
 				<!-- right-bar-->
 
-			<div class="right_info col-xs-4 col-md-4 hidden-xs">
+			<div class="right_info col-md-4 hidden-sm hidden-xs">
 				<div class="row">
 					<div class="sidebar ">
-						<div class="widget widget_text">
+						<div class="widget widget_text col-xs-12 hidden-xs hidden-sm">
 							<h3>About me</h3>
-							<div class="widget_line"></div>
-							<div class="textwidget">
-								<img src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2015/02/brixton-avatar.jpg">
-								Hello, my name is Monkey  I am a blogger living in New York. This is my blog, where I post my photos, fashion trends and tips about the fashion world. Never miss out on new stuff.
+							<div class="widget-line"></div>
+							<div class="row">
+								<div class="textwidget col-xs-12">
+									<img class="img-responsive" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2015/02/brixton-avatar.jpg">
+									Hello, my name is Monkey  I am a blogger living in New York. This is my blog, where I post my photos, fashion trends and tips about the fashion world. Never miss out on new stuff.
+								</div>
 							</div>
 						</div>
 			
@@ -737,7 +772,7 @@
 							<div class="widgett">
 								<div class="imgholder">
 									<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
-										<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+										<img class="img-responsive" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
 									</a>
 								</div>
 								<div class="wttitle">
@@ -749,7 +784,7 @@
 							<div class="widgett">
 								<div class="imgholder">
 									<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
-										<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+										<img class="img-responsive" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
 									</a>
 								</div>
 								<div class="wttitle">
@@ -761,7 +796,7 @@
 							<div class="widgett">
 								<div class="imgholder">
 									<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
-										<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+										<img class="img-responsive" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
 									</a>
 								</div>
 								<div class="wttitle">
@@ -773,7 +808,7 @@
 							<div class="widgett">
 								<div class="imgholder">
 									<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
-										<img width="285" height="155" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+										<img class="img-responsive" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
 									</a>
 								</div>
 								<div class="wttitle">
@@ -842,12 +877,14 @@
 						<div class="widget widget_fbw_id">
 							<h3>Like Us On Facebook</h3>
 							<div class="widget-line"></div>
-							<div id="container">
-								<div class="sections">
-									<div class="section" id="section0"><h3></h3></div>
-									<div class="section" id="section1"><h3></h3></div>
-									<div class="section" id="section2"><h3></h3></div>
-									<div class="section" id="section3"><h3></h3></div>
+							<div class="row">
+								<div id="container" class="col-xs-12">
+									<div class="sections">
+										<div class="section" id="section0"><h3></h3></div>
+										<div class="section" id="section1"><h3></h3></div>
+										<div class="section" id="section2"><h3></h3></div>
+										<div class="section" id="section3"><h3></h3></div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -862,7 +899,7 @@
 				<ul>
 					<li><a href="" class="prev_page" onclick="return false">«</a></li>
 					{% for index in data.paginator.page_range %}
-						<li><a href="" onclick="return false">{{index}}</a></li>
+						<li><a class="ch_page" href="" onclick="return false">{{index}}</a></li>
 					{% endfor %}
 					<li><a href="" class="next_page" onclick="return false">»</a></li>
 				</ul>

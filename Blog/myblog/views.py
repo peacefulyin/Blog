@@ -30,17 +30,17 @@ def index(request):
     return render(request,'myblog/index.html',context)
 
 
-def return_json(request,pagenum):
-    user = User.objects.all()
+def return_articals(request,pagenum):
+    Articals = User.Artical.all()
     user1 = User.objects.get(name='yin')
     artical = user1.artical_set.get(pk=1)
-    pagenator = Paginator(user, 3)
+    pagenator = Paginator(Articals, 3)
     page = pagenator.page(int(pagenum))
-    context = {'data': page, 'artical': artical}
+    context = {'data': page}
     list = []
     for i in page:
         list.append(i.name)
-    dict = {'a':list,'b':artical.content}
+    dict = {'a':list}
     #dict = json.dumps(dict)
     return JsonResponse(dict)
 
