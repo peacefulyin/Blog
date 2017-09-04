@@ -13,10 +13,8 @@
 
 			$(window).scroll(function () {
 
-			    var rela_top = $('#myCarousel').offset().top;
 				var n_navi_top = $('.n_navi_fixed').offset().top;
-			    console.info(n_navi_top);
-				if(n_navi_top>rela_top){
+				if(n_navi_top>358){
 					$('.n_navi_fixed').slideDown("slow");
 				}
 				else {

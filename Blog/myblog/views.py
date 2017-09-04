@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 from django.views.decorators.csrf import csrf_exempt
-from models import User,Artical,Comment
+from models import User, Artical, Comment, STag
 from django.core.paginator import *
 from django.http import JsonResponse,HttpResponse
 from django.shortcuts import render
@@ -16,11 +16,16 @@ def test(request):
 
 def index(request,classi):
     articals = Artical.objects.all()
-    populars = Artical.objects.order_by('-like_num')
-    result = random.sample(populars,4)
     pagenator = Paginator(articals,3)
     page = pagenator.page(int(1))
-    context = {'articals':page,'populars':result}
+
+    populars = Artical.objects.order_by('-like_num')
+    randpopular = random.sample(populars,4)
+
+    tags = STag.objects.all()
+    randtags = random.sample(tags, 15)
+
+    context = {'articals':page,'populars':randpopular,'tags':randtags}
     return render(request,'myblog/index.html',context)
 
 
@@ -51,10 +56,14 @@ def about(request):
 
 def show_artical(request,id,pagenum=1):
     artical = Artical.objects.get(id=int(id))
-    #comments = artical.comment_set.all()
-    #pagenator = Paginator(comments, 5)
-    #page = pagenator.page(int(pagenum))
-    context = {'artical':artical}
+
+    populars = Artical.objects.order_by('-like_num')
+    randpopular = random.sample(populars, 4)
+
+    tags = STag.objects.all()
+    randtags = random.sample(tags, 15)
+
+    context = {'artical':artical,'populars':randpopular,'tags':randtags}
     return render(request,'myblog/text.html',context)
 
 @csrf_exempt
