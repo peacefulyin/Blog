@@ -75,13 +75,19 @@
 		$('.ch_page').click(function () {
 			var num = $(this).text();
 			$.get('/getArticals/'+num,function (dic) {
-				$.each(dic.a,function (index,item) {
-						$('.list').eq(index).find('.atitle').text(item);
-						$('.list').eq(index).find('.blog_content').text(item);
+				$.each(dic.articals,function (index,item) {
+						$('.list').eq(index).find('.blog-category a').text(item.tag);
+						$('.list').eq(index).find('.atitle').text(item.title);
+						$('.list').eq(index).find('.blog_content p:eq(0)').text(item.title.slice(0,200));
+						$('.list').eq(index).find('.blog_content p:eq(1)').text(item.title.slice(200,400))
+						$('.list').eq(index).find('.post-meta-time').text(item.pub_time);
+						$('.list').eq(index).find('.post-meta-author').text('BY '+item.author);
+
+
 
 				});
 			});
-			if(Number(num)>2){
+			if(Number(num)>1){
 			    var page_bottons = $('.ch_page');
 				$.each(page_bottons,function (index,item) {
 				    console.info(num,index);
@@ -729,17 +735,17 @@
 	<div class="container m_cen">
 		<div class="row">
 			<div class="col-md-8 col-xs-12 col-sm-12 mtain">
-				{%for i in data%}
+				{%for each in articals%}
 					<div class="list row">
 						<div class="col-xs-12">
 							<div class="topBlog">
 								<div class="blog-category">
 									<em>
-										<a href="">fashion</a>
+										<a href="">{{each.tag}}</a>
 									</em>
 								</div>
 								<h2 class="c_title">
-									<a class="atitle" href="/artical/{{artical.id}}">{{artical.pub_time}}</a>
+									<a class="atitle" href="/artical/{{artical.id}}">{{each.title | slice:"0:8"}}</a>
 								</h2>
 							</div>
 							<div class="row">
@@ -754,10 +760,10 @@
 									<div class="blogContent">
 										<div class="blog_content">
 											<p>
-												Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsanet iusto odio dignissim qui blandit praesent. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+												{{each.content | slice:"0:200"}}
 											</p>
 											<p>
-												Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit.
+												{{each.content | slice:"200:400"}}
 											</p>
 											<p></p>
 											<div class="read_more">
@@ -767,8 +773,8 @@
 									</div>
 									<div class="blogBottom">
 										<div class="post-meta">
-											<a class="post-meta-time" href="">May 23, 2014</a>
-											<a class="post-meta-author" href="">by Monkey</a>
+											<a class="post-meta-time" href="">{{each.pub_time | date }}</a>
+											<a class="post-meta-author" href="">BY {{each.user.name}}</a>
 										</div>
 									</div>
 								</div>
@@ -970,7 +976,7 @@
 			<div class="wp_pagenavi">
 				<ul>
 					<li><a href="" class="prev_page" onclick="return false">«</a></li>
-					{% for index in data.paginator.page_range %}
+					{% for index in articals.paginator.page_range %}
 					{% if forloop.counter < 5%}
 						<li><a class="ch_page" href="" onclick="return false">{{index}}</a></li>
 					{% endif %}

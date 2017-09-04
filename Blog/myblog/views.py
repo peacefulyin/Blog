@@ -9,39 +9,32 @@ from django.http import JsonResponse
 
 from django.shortcuts import render
 
-"""
-def index(request,pagenum):
-    user = User.objects.all()
-    user1 = User.objects.get(name='yin')
-    artical = user1.artical_set.get(pk=1)
-    pagenator = Paginator(user,6)
-    page = pagenator.page(int(pagenum))
-    context = {'data':page,'artical':artical}
-    return render(request,'myblog/index.html',context)
-"""
 
 def index(request,classi):
-    user = User.objects.all()
-    user1 = User.objects.get(name='yin')
-    artical = user1.artical_set.get(pk=1)
-    pagenator = Paginator(user,3)
+    articals = Artical.objects.all()
+    pagenator = Paginator(articals,3)
     page = pagenator.page(int(1))
-    context = {'data':page,'artical':artical}
+    context = {'articals':page}
     return render(request,'myblog/index.html',context)
 
 
 def return_articals(request,pagenum):
-    Articals = User.Artical.all()
-    user1 = User.objects.get(name='yin')
-    artical = user1.artical_set.get(pk=1)
+    Articals = Artical.objects.all()
     pagenator = Paginator(Articals, 3)
     page = pagenator.page(int(pagenum))
-    context = {'data': page}
     list = []
     for i in page:
-        list.append(i.name)
-    dict = {'a':list}
-    #dict = json.dumps(dict)
+        result = str(i.pub_time)[:10].split('-')
+        pub_time = '{}年{}月{}日'.format(result[0],result[1],result[2])
+        item = {
+            'title': i.title,
+            'content': i.content,
+            'pub_time': pub_time,
+            'tag': i.tag,
+            'author': i.user.name,
+        }
+        list.append(item)
+    dict = {'articals':list}
     return JsonResponse(dict)
 
 def text(request):
