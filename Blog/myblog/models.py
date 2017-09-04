@@ -16,6 +16,9 @@ class Artical(models.Model):
     tag = models.CharField(max_length=15,default='lifestyle')
     user = models.ForeignKey(User)
     img_url = models.CharField(max_length=100)
+    read_num = models.IntegerField(default=0)
+    like_num = models.IntegerField(default=0)
+
     def __str__(self):
         return self.title.encode('utf-8')
 

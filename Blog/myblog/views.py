@@ -1,20 +1,26 @@
 # -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 
 from django.views.decorators.csrf import csrf_exempt
-
 from models import User,Artical,Comment
 from django.core.paginator import *
-from django.http import JsonResponse
-
+from django.http import JsonResponse,HttpResponse
 from django.shortcuts import render
 
+import random
+
+
+def test(request):
+    return HttpResponse('hello,testing')
 
 def index(request,classi):
     articals = Artical.objects.all()
+    populars = Artical.objects.order_by('-like_num')
+    result = random.sample(populars,4)
     pagenator = Paginator(articals,3)
     page = pagenator.page(int(1))
-    context = {'articals':page}
+    context = {'articals':page,'populars':result}
     return render(request,'myblog/index.html',context)
 
 
@@ -37,18 +43,18 @@ def return_articals(request,pagenum):
     dict = {'articals':list}
     return JsonResponse(dict)
 
-def text(request):
+def text(request,id):
     return render(request,'myblog/text.html')
 
 def about(request):
     return render(request,'myblog/about.html')
 
 def show_artical(request,id,pagenum=1):
-    artical = Artical.objects.get(id=1)
-    comments = artical.comment_set.all()
-    pagenator = Paginator(comments, 5)
-    page = pagenator.page(int(pagenum))
-    context = {'artical':artical,'comments':page}
+    artical = Artical.objects.get(id=int(id))
+    #comments = artical.comment_set.all()
+    #pagenator = Paginator(comments, 5)
+    #page = pagenator.page(int(pagenum))
+    context = {'artical':artical}
     return render(request,'myblog/text.html',context)
 
 @csrf_exempt
