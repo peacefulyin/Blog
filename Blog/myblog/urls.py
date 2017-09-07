@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^text/(\d+)$',views.text),
     url(r'^send_data$', views.send_data),
     url(r'^getArticals/(\d+)$', views.return_articals),
+    url(r'^send_comment$', views.receive_comment),
     url(r'^get_comments/(\d+)$', views.return_comments),
     url(r'^about/$',views.about),
     url(r'^artical/(\d+)$',views.show_artical,name='artical'),

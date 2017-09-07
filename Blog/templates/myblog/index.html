@@ -79,13 +79,10 @@
 				$.each(dic.articals,function (index,item) {
 						$('.list').eq(index).find('.blog-category a').text(item.tag);
 						$('.list').eq(index).find('.atitle').text(item.title);
-						$('.list').eq(index).find('.blog_content p:eq(0)').text(item.title.slice(0,200));
-						$('.list').eq(index).find('.blog_content p:eq(1)').text(item.title.slice(200,400))
+						$('.list').eq(index).find('.blog_content p:eq(0)').text(item.content.slice(0,200));
+						$('.list').eq(index).find('.blog_content p:eq(1)').text(item.content.slice(200,400))
 						$('.list').eq(index).find('.post-meta-time').text(item.pub_time);
 						$('.list').eq(index).find('.post-meta-author').text('BY '+item.author);
-
-
-
 				});
 			});
 			if(Number(num)>1){
@@ -95,8 +92,8 @@
 					$(this).text(Number(num)-1+index)
                 })
 			}
-
     });
+		
 
 
     });
@@ -400,11 +397,13 @@
 		    color: #444;
 		}
 
+
+
 		.social_icons a{
-			background-color: #509BA0 !important;
 			float: left;
 		    background: #eee;
 		    margin-right: 13px;
+			margin-left: 12px;
 		    width: 44px;
 		    height: 44px !important;
 		    border-radius: 90%;
@@ -759,7 +758,7 @@
 											</p>
 											<p></p>
 											<div class="read_more">
-												<a href="">Continue reading</a>
+												<a href="{% url 'blog:artical' each.id%}">Continue reading</a>
 											</div>
 										</div>
 									</div>
@@ -820,15 +819,19 @@
 								<div class="social_icons">
 									<div>
 										<a href="">
+											<img class="img-responsive" src='{%static "myblog/icons/21.png"%}' alt="">
 											<i class="fa fa-some"></i>
 										</a>
 										<a href="">
+											<img class="img-responsive" src='{%static "myblog/icons/23.png"%}' alt="">
 											<i class="fa fa-some"></i>
 										</a>
 										<a href="">
+											<img class="img-responsive" src='{%static "myblog/icons/7.png"%}' alt="">
 											<i class="fa fa-some"></i>
 										</a>
 										<a href="">
+											<img class="img-responsive" src='{%static "myblog/icons/10.png"%}' alt="">
 											<i class="fa fa-some"></i>
 										</a>
 									</div>

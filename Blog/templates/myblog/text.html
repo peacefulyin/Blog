@@ -31,16 +31,40 @@
 {% block js %}
 <script>
 	$(document).ready(function() {
+        <!-- 轮播 -->
+        $("#container").PageSwitch({
+            direction: 'horizontal',
+            easing: 'ease-in',
+            duration: 1000,
+            autoPlay: true,
+            loop: 'false'
+        });
+
+		$('.form-submit').click(function () {
+		    var mydate = new Date();
+		    var datetime = mydate.getFullYear()+'-' + (mydate.getMonth()+1)+'-'+mydate.getDate();
+			var name = $('.commentform #author').val();
+			var email = $('.commentform #email').val();
+			var content = $('.commentform #comment').val();
+			var time = datetime;
+
+			if(name && content){
+			    $.get('/send_comment',function (dic) {
+
+					$('.commentlist ul').prepend("<li>\n" +
+                    "\t\t\t\t\t\t\t\t\t<div class=\"cl_name\"><span>"+name+"</span></div>\n" +
+                    "\t\t\t\t\t\t\t\t\t<div class=\"cl_content\"><p>"+content+"</p></div>\n" +
+                    "\t\t\t\t\t\t\t\t\t<div class=\"cl_time\"><span>"+time+"</span></div>\n" +
+                    "\n" +
+                    "\t\t\t\t\t\t\t\t</li>")
+                });
 
 
-			<!-- 轮播 -->
-		$("#container").PageSwitch({
-			direction:'horizontal',
-			easing:'ease-in',
-			duration:1000,
-			autoPlay:true,
-			loop:'false'
-		});
+
+			}
+        })
+
+	})
 </script>
 
 {% endblock %}
@@ -50,7 +74,7 @@
 
 		body {
 		    background-color: rgb(242,242,242);
-		    background: #f2f2f2 url() !important;
+		    background: #f2f2f2 ;
 		    color: #525452;
 		    font-family: Raleway, "Helvetica Neue";
 		    font-size: 18px;
@@ -315,7 +339,17 @@
 		}
 
 		.social_icons a{
-			background-color: #509BA0;
+			float: left;
+		    background: #eee;
+		    margin-right: 13px;
+			margin-left: 12px;
+		    width: 44px;
+		    height: 44px !important;
+		    border-radius: 90%;
+		    line-height: 44px;
+		    text-align: center;
+		    color: #fff;
+		    font-size: 17px;
 		}
 
 
@@ -740,7 +774,37 @@
 		#submit:hover{
 			background-color: rgb(80,155,160);
 		}
-		
+
+		/* comment-list*/
+		.commentlist{
+			margin-bottom: 0;
+		    float: left;
+		    width: 100%;
+		    background: #fff;
+		    padding-top: 10px;
+		    margin-top: 1px;
+		    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05);
+		}
+
+		.commentlist li{
+			margin-left: 15px;
+
+		}
+
+		.commentlist li .cl_name{
+			margin: 10px 0;
+			color: rgb(80,155,160);
+		}
+
+		.commentlist li .cl_content p{
+		 	word-wrap:break-word;
+		}
+
+		.commentlist li .cl_time{
+			margin: 10px 0 10px 0;
+		}
+
+
 		/* little-banner*/
 		<!-- 小轮播 -->
 
@@ -876,6 +940,17 @@
 								</a>
 							</div>
 						</div>
+
+						<div class="commentlist">
+							<ul>
+								<li>
+									<div class="cl_name"><span>朋友</span></div>
+									<div class="cl_content"><p>你好啊，小奇</p></div>
+									<div class="cl_time"><span>2017-9-8</span></div>
+
+								</li>
+							</ul>
+						</div>
 						
 						<div class="commentform">
 							<div class="titleborderOut">
@@ -907,13 +982,11 @@
 										<input type="text"  id="email" tabindex="1">
 									</div>
 									<p class="form-submit">
-										<input name="submit" type="submit" id="submit" class="submit" value="Leave a Comment">
+										<input name="submit" type="submit" id="submit" class="submit" onclick="return false" value="Leave a Comment">
 									</p>
 								</form>
 							</div>
 						</div>
-						
-
 					</div>
 			
 	<!-- right-bar-->
@@ -940,15 +1013,19 @@
 								<div class="social_icons">
 									<div>
 										<a href="">
+											<img class="img-responsive" src='{%static "myblog/icons/21.png"%}' alt="">
 											<i class="fa fa-some"></i>
 										</a>
 										<a href="">
+											<img class="img-responsive" src='{%static "myblog/icons/23.png"%}' alt="">
 											<i class="fa fa-some"></i>
 										</a>
 										<a href="">
+											<img class="img-responsive" src='{%static "myblog/icons/7.png"%}' alt="">
 											<i class="fa fa-some"></i>
 										</a>
 										<a href="">
+											<img class="img-responsive" src='{%static "myblog/icons/10.png"%}' alt="">
 											<i class="fa fa-some"></i>
 										</a>
 									</div>

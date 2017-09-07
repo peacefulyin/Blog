@@ -66,6 +66,9 @@ def show_artical(request,id,pagenum=1):
     context = {'artical':artical,'populars':randpopular,'tags':randtags}
     return render(request,'myblog/text.html',context)
 
+def receive_comment(request):
+
+
 @csrf_exempt
 def return_comments(request,pagenum):
     title = request.POST.get('atitle')

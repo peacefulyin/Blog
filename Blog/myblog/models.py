@@ -25,7 +25,7 @@ class Artical(models.Model):
 
 class STag(models.Model):
     name = models.CharField(max_length=15)
-    artical = models.ManyToManyField(Artical,null=True,blank=True)
+    articals = models.ManyToManyField(Artical)
     def __str__(self):
         return self.name.encode('utf-8')
 
