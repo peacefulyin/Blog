@@ -40,6 +40,8 @@
             loop: 'false'
         });
 
+
+
 		$('.form-submit').click(function () {
 		    var mydate = new Date();
 		    var datetime = mydate.getFullYear()+'-' + (mydate.getMonth()+1)+'-'+mydate.getDate();
@@ -47,9 +49,16 @@
 			var email = $('.commentform #email').val();
 			var content = $('.commentform #comment').val();
 			var time = datetime;
-
+			var url = window.location.href;
+			var artical_id = url.split('/').pop();
+			data = {
+			    'name':name,
+				'text':content,
+				'pub_time':time,
+			    'artical_id':artical_id
+			};
 			if(name && content){
-			    $.get('/send_comment',function (dic) {
+			    $.post('/send_comment',data,function () {
 
 					$('.commentlist ul').prepend("<li>\n" +
                     "\t\t\t\t\t\t\t\t\t<div class=\"cl_name\"><span>"+name+"</span></div>\n" +
@@ -58,11 +67,19 @@
                     "\n" +
                     "\t\t\t\t\t\t\t\t</li>")
                 });
+			}
+        });
 
 
-
+		/*
+		$('.comment_ch_page .ch_comment').click(function () {
+			var now_page = $('.comment_page').text().split('/')[0]
+		    if($(this).text() == Previous){
+		        $.get('/get_comments/'+Number(now_page),function (dic) {
+                })
 			}
         })
+		*/
 
 	})
 </script>
@@ -412,6 +429,8 @@
 		    font-size: 15px;
 		    color: #aaa;
 		}
+
+
 
 		.sidebar .widget_search i, #footer .widget_search i{
 		    float: right;
@@ -780,19 +799,18 @@
 			margin-bottom: 0;
 		    float: left;
 		    width: 100%;
-		    background: #fff;
 		    padding-top: 10px;
 		    margin-top: 1px;
 		    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05);
 		}
 
 		.commentlist li{
-			margin-left: 15px;
-
+			background: #fff;
+			padding-left: 15px;
 		}
 
 		.commentlist li .cl_name{
-			margin: 10px 0;
+			margin: 1px 0 10px 0;
 			color: rgb(80,155,160);
 		}
 
@@ -801,7 +819,7 @@
 		}
 
 		.commentlist li .cl_time{
-			margin: 10px 0 10px 0;
+			margin: 10px 0 0 0;
 		}
 
 
@@ -943,14 +961,35 @@
 
 						<div class="commentlist">
 							<ul>
+								{% for each in comments%}
 								<li>
-									<div class="cl_name"><span>朋友</span></div>
-									<div class="cl_content"><p>你好啊，小奇</p></div>
-									<div class="cl_time"><span>2017-9-8</span></div>
-
+									<div class="cl_name"><span>{{each.name}}</span></div>
+									<div class="cl_content"><p>{{each.text}}</p></div>
+									<div class="cl_time"><span>{{each.pub_time | date:"Y-n-d"}}</span></div>
 								</li>
+								{%endfor%}
+
 							</ul>
 						</div>
+
+						<div class="row">
+							<div class="post-navigation comment_ch_page col-md-12">
+								<a href="">
+									<div class="link-title-previous">
+										<div class="ch_comment prev-post-title pre_comment">Previous</div>
+									</div>
+								</a>
+								<a href="">
+									<div class="link-title-next">
+										<div class="ch_comment next-post-title next_comment">Next</div>
+									</div>
+								</a>
+								<div>
+									<span class="comment_page"></span>
+								</div>
+							</div>
+						</div>
+
 						
 						<div class="commentform">
 							<div class="titleborderOut">
@@ -1111,6 +1150,6 @@
 				</div>
 			</div>
 		</div>
-
+</div>
 
 {%endblock%}

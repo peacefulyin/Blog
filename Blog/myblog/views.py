@@ -24,7 +24,6 @@ def index(request,classi):
 
     tags = STag.objects.all()
     randtags = random.sample(tags, 15)
-
     context = {'articals':page,'populars':randpopular,'tags':randtags}
     return render(request,'myblog/index.html',context)
 
@@ -63,10 +62,28 @@ def show_artical(request,id,pagenum=1):
     tags = STag.objects.all()
     randtags = random.sample(tags, 15)
 
-    context = {'artical':artical,'populars':randpopular,'tags':randtags}
+    comments = artical.comment_set.all().order_by('pub_time')
+    pagenator = Paginator(comments,10)
+    page = pagenator.page(1)
+
+    context = {'artical':artical,'populars':randpopular,'tags':randtags,'comments':page}
+
     return render(request,'myblog/text.html',context)
 
+@csrf_exempt
 def receive_comment(request):
+    post_list = request.POST
+    artical_id = post_list.get('artical_id')
+    artical = Artical.objects.get(pk=artical_id)
+
+    c = Comment()
+    c.name = post_list.get('name')
+    c.pub_time = post_list.get('pub_time')
+    c.text = post_list.get('text')
+    c.artical = artical
+    c.save()
+    return JsonResponse({'response':'ok'})
+
 
 
 @csrf_exempt
