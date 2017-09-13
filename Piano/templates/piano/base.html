@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{%load static from staticfiles%}
+	<meta charset="UTF-8">
+	<title>base</title>
+	<link rel="stylesheet" type="text/css" href="{%static 'piano/css/reset.css'%}">
+	<link rel="stylesheet" type="text/css" href="{%static 'piano/css/bootstrap.min.css'%}">
+	<script type="text/javascript" src="{%static 'piano/js/jquery-1.12.4.js'%}"></script>
+	<script type="text/javascript" src="{%static 'piano/js/bootstrap.min.js'%}"></script>
+	{%block source%}{%endblock%}
+
+</head>
+	{%block js%}{%endblock%}
+	{%block style%}{%endblock%}
+
+<style type="text/css">
+	.nav{
+		background-color: #FAFBFD;
+		position: fixed;
+		padding: 0 24px;
+		left: 0;
+		top: 0;
+		height: 60px;
+		width: 100%;
+		border-bottom: 2px solid #E9EDF8;
+	}
+	.nav a{
+		display: inline-block;
+	}
+
+	.nav .logo{
+		line-height: 60px;
+		width: 117px;
+    	height: 26px;
+	}
+
+	.nav .explore{
+		margin-left: 30px;
+	}
+
+	.nav_right{
+		line-height: 60px;
+		float: right;
+	}
+
+	
+	.bottom_wrap{
+		position: relative;
+		bottom: 0;
+		height: 250px;
+		width: 100%;
+		background-color: #ccc;
+
+	}
+
+</style>
+
+<body>
+<div class="nav">
+	<a class="logo" href=""><img src="https://s1-f.scribdassets.com/images/landing/home2_landing/scribd_logo_horiz_small.svg?1504907137" alt=""></a>
+	<a class="explore" href="">Explore</a>
+	<input type="text">
+	<div class="nav_right">
+		<a href="">upload</a>
+		<a href="">Sign in</a>
+		<a href="">Join</a>
+	</div>
+</div>
+
+{%block body%}{%endblock%}
+
+
+<div class="bottom_wrap"></div>
+
+	
+</body>
+</html>
