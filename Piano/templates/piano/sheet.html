@@ -42,7 +42,7 @@
 
         $('.m_sheet:eq(0)').show();
         var sheet_total = {{sheet.page_num}};
-        console.info(sheet_total);
+
         var now_sheet = 1;
 
         $('.left_sheet,.right_sheet').click(function () {
@@ -73,9 +73,11 @@
             $('body').fullScreen();
         });
 
-        document.addEventListener("fullscreenchange", function () {
-            console.info('test');
-        }, false);
+        $('.back').click(function () {
+             history.back();
+        })
+
+
 
 
 
@@ -118,6 +120,17 @@
     }
 
     .fullscreen img{
+        width: 90%;
+    }
+
+    .back{
+        position: absolute;
+        top: 25%;
+        left: 5%;
+        cursor: pointer;
+    }
+
+    .back img{
         width: 80%;
     }
 
@@ -138,9 +151,8 @@
     .left_sheet{
         position: absolute;
         top: 50%;
-        left: -110px;
         margin-top: -33px;
-        margin-left: -17px;
+        margin-left: -47px;
         width: 21px;
         height: 38px;
         background-image: url(https://s1-f.scribdassets.com/images/icons/toolbar-arrows.png?1505253522);
@@ -149,9 +161,8 @@
     .right_sheet{
         position: absolute;
         top: 50%;
-        right: -140px;
         margin-top: -33px;
-        margin-left: -17px;
+        margin-left: 27px;
         width: 21px;
         height: 38px;
         background-image: url('https://s1-f.scribdassets.com/images/icons/toolbar-arrows.png?1505253522');
@@ -164,11 +175,12 @@
 
     .sheet_con{
         margin: 0 auto;
-        width: 630px;
+        text-align: center;
         position: relative;
     }
 
     img{
+        width: auto;
         height: 100%;
     }
 
@@ -182,6 +194,7 @@
     <div class="marker">
         <img class="" src="{%static 'piano/images/normal.png'%}" alt="">
     </div>
+    <div class="back"><img src="{%static 'piano/images/back.png'%}" alt=""></div>
     <div class="fullscreen"><img src="{%static 'piano/images/fullscreen.png'%}" alt=""></div>
 </div>
 <div class="inv_nav"></div>

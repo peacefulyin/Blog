@@ -6,5 +6,9 @@ urlpatterns = [
     url(r'^album/(.*)', views.list),
     url(r'^musicSheet/(.*)', views.show_sheet),
     url(r'^category/(.*)', views.category),
+    url(r'^login/signin', views.signin),
+    url(r'login/signup', views.signup),
+    url(r'login/quit', views.quitlogin),
+    url(r'findpass/(.*)', views.findpass),
 
 ]

@@ -4,7 +4,9 @@ from __future__ import unicode_literals
 from django.db import models
 
 class User(models.Model):
-    name = models.CharField(max_length=20,unique=True)
+    name = models.CharField(max_length=20,default='琴友')
+    uname = models.CharField(max_length=20,default='', unique=True)
+    upwd = models.CharField(max_length=20,default='')
     email = models.EmailField(default='')
     gender = models.BooleanField(default=True)
     def __str__(self):
