@@ -96,7 +96,7 @@
 		    font-family: Raleway, "Helvetica Neue";
 		    font-size: 18px;
 		    font-weight: normal;
-		    line-height: 1.85em;
+		    line-height: 2.5em;
 		}
 
 		a{
@@ -250,6 +250,7 @@
 		.blogContent .blog_content p{
 		    padding: 10px 0 15px 0;
 		    display: block;
+			text-indent:25px;
 
 		}
 
@@ -585,17 +586,26 @@
 		}
 
 		.relatedtitle h4{
-			margin-bottom: 20px;
+			margin-bottom: 220px;
 			font-family: Verdana !important;
 		    color: #333;
 		    font-size: 30px !important;
+
 		}
+
+		.one_third h4 a{
+			width: 200px;
+			display: block;
+			white-space: nowrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+			}
 
 
 		.one_half, .one_third, .two_thirds, .one_fourth, .three_fourths, .one_fifth, .two_fifth, .three_fifths, .four_fifths {
 		    position: relative;
 		    margin: 0;
-		    margin-right: 4%;
+		    margin-right: 3%;
 		    float: left;
 		}
 
@@ -604,6 +614,7 @@
 		    font-size: 14px !important;
 		    text-transform: uppercase;
 		    line-height: 22px;
+
 		}
 
 		.relatedPosts .last{
@@ -868,13 +879,13 @@
 									</em>
 								</div>
 								<h2 class="c_title">
-									<a href="/artical/{{artical.id}}">my artical</a>
+									<a href="/artical/{{artical.id}}">{{artical.id}}</a>
 								</h2>
 							</div>
 							<div class="row">
 								<div class="blogImage col-xs-12">
 									<a href="">
-										<img class="img-responsive img-rounded" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2016/03/manly1-1180x650.jpg">
+										<img class="img-responsive img-rounded" src="/static/myblog/articalImages/thumbnail_750_400/{{artical.id}}.jpg">
 									</a>
 								</div>
 							</div>
@@ -883,10 +894,9 @@
 									<div class="blogContent">
 										<div class="blog_content">
 											<p>
-												Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsanet iusto odio dignissim qui blandit praesent. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+												{{artical.content}}
 											</p>
 											<p>
-												Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit.
 											</p>
 										</div>
 									</div>
@@ -921,22 +931,15 @@
 						<div class="row">
 							<div class="relatedPosts col-md-12">
 								<div class="relatedtitle"><h4>Related Posts</h4></div>
+
 								<div class="related">
+									{% for each in related %}
 									<div class="one_third">
-										<div class="img"><a href=""><img class="img-responsive" width="220" height="130" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2012/03/manly3-345x190.jpg" alt=""></a></div>
-										<h4><a href="">LONG BIKE RIDE</a></h4>
-										<a href="" class="post-meta-time">March 13, 2016</a>
+										<div class="img"><a href="{% url 'blog:artical' each.id%}"><img class="img-responsive" width="220" height="130" src="/static/myblog/articalImages/thumbnail_345_190/{{each.id}}.jpg" alt=""></a></div>
+										<h4><a href="">{{each.title}}</a></h4>
+										<a href="{% url 'blog:artical' each.id%}" class="post-meta-time">{{each.pub_time}}</a>
 									</div>
-									<div class="one_third">
-										<div class="img"><a href=""><img class="img-responsive" width="220" height="130" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2012/03/manly3-345x190.jpg" alt=""></a></div>
-										<h4><a href="">LONG BIKE RIDE</a></h4>
-										<a href="" class="post-meta-time">March 13, 2016</a>
-									</div>
-									<div class="one_third last">
-										<div class="img"><a href=""><img class="img-responsive" width="220" height="130" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2012/03/manly3-345x190.jpg" alt=""></a></div>
-										<h4><a href="">LONG BIKE RIDE</a></h4>
-										<a href="" class="post-meta-time">March 13, 2016</a>
-									</div>
+									{% endfor %}
 								</div>
 							</div>
 						</div>
@@ -1080,12 +1083,12 @@
 							<div class="widgett">
 								<div class="imgholder">
 									<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
-										<img class="img-responsive" src="http://brixton.premiumcoding.com/demo5/wp-content/uploads/2014/06/amory3-285x155.jpg">
+										<img class="img-responsive" src="/static/myblog/articalImages/thumbnail_285_155/{{each.id}}.jpg">
 									</a>
 								</div>
 								<div class="wttitle">
 									<h4>
-										<a href="{% url 'blog:artical' each.id %}">{{each.title|slice:"6"}}</a>
+										<a href="{% url 'blog:artical' each.id %}">{{each.title}}</a>
 									</h4>
 								</div>
 							</div>

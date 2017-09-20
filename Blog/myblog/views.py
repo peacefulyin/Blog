@@ -3,33 +3,34 @@
 from __future__ import unicode_literals
 
 from django.views.decorators.csrf import csrf_exempt
-from models import User, Artical, Comment, STag
 from django.core.paginator import *
 from django.http import JsonResponse,HttpResponse
+from django.views.decorators.cache import cache_page
 from django.shortcuts import render
+
+from models import User, Artical, Comment, STag
 
 import random
 
 
-def test(request):
-    return HttpResponse('hello,testing')
 
 def index(request,classi):
-    articals = Artical.objects.all()
+    articals = Artical.objects.order_by('-id')
     pagenator = Paginator(articals,3)
     page = pagenator.page(int(1))
 
     populars = Artical.objects.order_by('-like_num')
     randpopular = random.sample(populars,4)
+    relate = random.sample(populars,3)
 
     tags = STag.objects.all()
     randtags = random.sample(tags, 15)
-    context = {'articals':page,'populars':randpopular,'tags':randtags}
+    context = {'articals':page,'populars':randpopular,'relate':relate,'tags':randtags}
     return render(request,'myblog/index.html',context)
 
 
 def return_articals(request,pagenum):
-    Articals = Artical.objects.all()
+    Articals = Artical.objects.order_by('-id')
     pagenator = Paginator(Articals, 3)
     page = pagenator.page(int(pagenum))
     list = []
@@ -42,6 +43,7 @@ def return_articals(request,pagenum):
             'pub_time': pub_time,
             'tag': i.tag,
             'author': i.user.name,
+            'id':i.id,
         }
         list.append(item)
     dict = {'articals':list}
@@ -55,6 +57,7 @@ def about(request):
 
 def show_artical(request,id,pagenum=1):
     artical = Artical.objects.get(id=int(id))
+    related = Artical.objects.order_by('-pub_time')[:3]
 
     populars = Artical.objects.order_by('-like_num')
     randpopular = random.sample(populars, 4)
@@ -66,7 +69,7 @@ def show_artical(request,id,pagenum=1):
     pagenator = Paginator(comments,10)
     page = pagenator.page(1)
 
-    context = {'artical':artical,'populars':randpopular,'tags':randtags,'comments':page}
+    context = {'artical':artical,'populars':randpopular,'tags':randtags,'comments':page, 'related':related}
 
     return render(request,'myblog/text.html',context)
 
@@ -114,3 +117,6 @@ def send_data(request):
 
     return JsonResponse({'1':'1'})
 
+
+def base(request):
+    return render(request,'myblog/base.html')
