@@ -63,16 +63,28 @@
 		-->
 
 
+		var now_page = 1;
+		$('.ch_page, .prev_page, .next_page').click(function (event) {
+			var totalpage = Number("{{articals.paginator.num_pages}}");
 
-		var url = window.location.href;
-		page_num = url.split('/').pop();
-		$('.next_page').attr('href',Number(page_num) + 1);
-		if (page_num > 1) {
-			$('.prev_page').attr('href',Number(page_num) - 1);
-		}
+		    if(event.target.className=='ch_page'){
+		        var num = $(this).text();
+			}else if(event.target.className=='prev_page'){
+		        if(now_page>1){
+		            var num = now_page-1;
+					now_page-=1
+				}
+			}else if(event.target.className=='next_page'){
+			    if(now_page<totalpage){
+			        var num = now_page+1;
+					now_page+=1
+				}
 
-		$('.ch_page').click(function () {
-			var num = $(this).text();
+			}
+			console.info(now_page);
+
+
+
 			$.get('/getArticals/'+num,function (dic) {
 				$.each(dic.articals,function (index,item) {
 						$('.list').eq(index).find('.blog-category a').text(item.tag);
@@ -85,7 +97,13 @@
 						$('.list').eq(index).find('.blogImage img').attr('src',basesrc+item.id+'.jpg');
 				});
 			});
-			if(Number(num)>1){
+
+			$('.next_page').attr('href',Number(num) + 1);
+			if (page_num > 1) {
+				$('.prev_page').attr('href',Number(num) - 1);
+			}
+
+			if(Number(num)>1 && Number(num)<Number(totalpage)-1){
 			    var page_bottons = $('.ch_page');
 				$.each(page_bottons,function (index,item) {
 					$(this).text(Number(num)-1+index)
@@ -729,7 +747,7 @@
 		</div>
 		<!-- 轮播（Carousel）导航 -->
 		<a class="carousel-control left" href="#myCarousel"
-			data-slide="prev">&lsaquo;d
+			data-slide="prev">&lsaquo;
 		</a>
 		<a class="carousel-control right" href="#myCarousel"
 			data-slide="next">&rsaquo;
@@ -861,7 +879,7 @@
 							{%for each in populars%}
 							<div class="widgett">
 								<div class="imgholder">
-									<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
+									<a href="{% url 'blog:artical' each.id %}" title="Permanent Link to OUT TRIP INTO THE WILD">
 										<img class="img-responsive" src="/static/myblog/articalImages/thumbnail_285_155/{{each.id}}.jpg">
 									</a>
 								</div>
@@ -938,13 +956,13 @@
 
 			<div class="wp_pagenavi">
 				<ul>
-					<li><a href="" class="prev_page" onclick="return false">«</a></li>
+					<li><a href="1" class="prev_page" onclick="return false">«</a></li>
 					{% for index in articals.paginator.page_range %}
 					{% if forloop.counter < 5%}
 						<li><a class="ch_page" href="" onclick="return false">{{index}}</a></li>
 					{% endif %}
 					{% endfor %}
-					<li><a href="" class="next_page" onclick="return false">»</a></li>
+					<li><a href="2" class="next_page" onclick="return false">»</a></li>
 				</ul>
 			</div>
 		</div>

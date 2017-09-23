@@ -879,7 +879,7 @@
 									</em>
 								</div>
 								<h2 class="c_title">
-									<a href="/artical/{{artical.id}}">{{artical.id}}</a>
+									<a href="/artical/{{artical.id}}">{{artical.title}}</a>
 								</h2>
 							</div>
 							<div class="row">
@@ -902,6 +902,11 @@
 									</div>
 									<div class="tags">
 										<i class="fa fa-tags"></i>
+										<!--
+											{% for each in articaltags%}
+											<a href="">{{each.name}}</a>
+											{% endfor %}
+										-->
 										<a href="">dinner</a>,
 										<a href="">food</a>,
 										<a href="">lifestyle</a>,
@@ -946,17 +951,17 @@
 
 						<div class="row">
 							<div class="post-navigation col-md-12">
-								<a href="">
+								<a href="/artical/{{prevartical.id}}">
 									<div class="link-title-previous">
 										<span>« Previous post</span>
-										<div class="prev-post-title">PERFECT ACCESSORIES</div>
+										<div class="prev-post-title">{{prevartical.title}}</div>
 									</div>
 									
 								</a>
-								<a href="">
+								<a href="/artical/{{nextartical.id}}">
 									<div class="link-title-next">
 										<span>Next post »</span>
-										<div class="next-post-title">Joseph Campbell</div>
+										<div class="next-post-title">{{nextartical.title}}</div>
 									</div>
 								</a>
 							</div>
@@ -1082,7 +1087,7 @@
 							{%for each in populars%}
 							<div class="widgett">
 								<div class="imgholder">
-									<a href="" title="Permanent Link to OUT TRIP INTO THE WILD">
+									<a href="{% url 'blog:artical' each.id %}" title="Permanent Link to OUT TRIP INTO THE WILD">
 										<img class="img-responsive" src="/static/myblog/articalImages/thumbnail_285_155/{{each.id}}.jpg">
 									</a>
 								</div>
@@ -1134,21 +1139,7 @@
 								{%endfor%}
 							</div>
 						</div>
-						<!-- widget_tag_cloud over-hear -->
-						<div class="widget widget_fbw_id">
-							<h3>Like Us On Facebook</h3>
-							<div class="widget-line"></div>
-							<div class="row">
-								<div id="container">
-									<div class="sections">
-										<div class="section"  id="section0"><img src='{%static "myblog/lunbo/images/穿过生命的泥泞时刻.jpg"%}' alt=""><h3></h3></div>
-										<div class="section"  id="section1"><img src='{%static "myblog/lunbo/images/故事.jpg"%}' alt=""><h3></h3></div>
-										<div class="section"  id="section2"><img src='{%static "myblog/lunbo/images/亲爱的甜橙树.jpg"%}' alt=""><h3></h3></div>
-										<div class="section"  id="section3"><img src='{%static "myblog/lunbo/images/万物即聪明又奇妙.jpg"%}' alt=""><h3></h3></div>
-									</div>
-								</div>
-							</div>
-						</div>
+
 					</div>
 				</div>
 			</div>

@@ -49,8 +49,7 @@ def return_articals(request,pagenum):
     dict = {'articals':list}
     return JsonResponse(dict)
 
-def text(request,id):
-    return render(request,'myblog/text.html')
+
 
 def about(request):
     return render(request,'myblog/about.html')
@@ -65,11 +64,29 @@ def show_artical(request,id,pagenum=1):
     tags = STag.objects.all()
     randtags = random.sample(tags, 15)
 
+    articaltags = STag.objects.all()
+    articaltags = random.sample(articaltags, 3)
+
+
     comments = artical.comment_set.all().order_by('pub_time')
-    pagenator = Paginator(comments,10)
+    pagenator = Paginator(comments, 10)
     page = pagenator.page(1)
 
-    context = {'artical':artical,'populars':randpopular,'tags':randtags,'comments':page, 'related':related}
+    index = list(populars).index(artical)
+
+    try:
+        nextartical = populars[index+1]
+    except:
+        nextartical =  artical
+
+    try:
+        prevartical = populars[index - 1]
+    except:
+        prevartical = artical
+
+
+
+    context = {'artical':artical,'populars':randpopular,'tags':randtags, 'articaltags':articaltags, 'comments':page, 'related':related, 'nextartical':nextartical, 'prevartical':prevartical}
 
     return render(request,'myblog/text.html',context)
 
